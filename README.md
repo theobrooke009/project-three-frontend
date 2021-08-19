@@ -2,6 +2,8 @@
 
 ## Update the Proxy Server
 
+sup yo 
+
 By default, the proxy server is set up to point at port 8000, if you need to do so update in `setupProxy.js` where commented.
 
 ## Using NPM
