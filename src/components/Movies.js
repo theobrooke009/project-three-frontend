@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 
 // import axios from 'axios'
 
+
 const genreOptions = [
   { value: 'action', label: 'Action' },
   { value: 'animation', label: 'Animation' },
@@ -52,7 +53,7 @@ function Movies() {
   const handleSubmit = (event) => {
     event.preventDefault()
     // window.alert(`Submitting ${JSON.stringify(formData, null, 2)}
-    history.push('/movies/binge')
+    history.push('/binge')
 
 
   }
@@ -129,7 +130,10 @@ function Movies() {
         <div className="bottomhalf">
           <div className="movies">
             <h2>This is Movie Index</h2>
-
+            {/* {data && data.map(movie => (
+              <div className="card" key={movie.name}>
+              </div>
+            ))} */}
           </div>
         </div>
       </div>
