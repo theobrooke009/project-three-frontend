@@ -16,6 +16,7 @@ const genreOptions = [
 ]
 
 function Movies() {
+  const history = useHistory()
   // const [data, setData] = React.useState(null)
   const [formData, setFormData] = React.useState({
     genres: [],
