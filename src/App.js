@@ -1,16 +1,16 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import NavBar from './components/NavBar.js'
-import Home from './components/Home.js'
+import Navbar from './components/common/Navbar.js'
+import Home from './components/common/Home.js'
 import Movies from './components/Movies.js'
-import Register from './components/Register.js'
-import Login from './components/Login.js'
+import Register from './components/auth/Register.js'
+import Login from './components/auth/Login.js'
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
+      <Navbar />
       <Switch>
         <Route exact path="/">
           <Home />
