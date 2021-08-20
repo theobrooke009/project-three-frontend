@@ -1,0 +1,11 @@
+{
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#e60ec9",
+    "titleBar.activeBackground": "#e60ec9",
+    "titleBar.inactiveBackground": "#e60ec9",
+    "statusBar.foreground": "#000",
+    "titleBar.inactiveForeground": "#000",
+    "titleBar.activeForeground": "#000",
+  },
+  "window.title": "BINGE MOVIES FRONTEND"
+}
