@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import NavBar from './components/NavBar.js'
-import Home from './components/Home.js'
+import NavBar from './components/common/Navbar.js'
+import Home from './components/common/Home.js'
 import Movies from './components/Movies.js'
 import Register from './components/Register.js'
 import Login from './components/Login.js'
