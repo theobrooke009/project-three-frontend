@@ -1,6 +1,9 @@
 import React from 'react'
 import Select from 'react-select'
+import { useHistory } from 'react-router-dom'
+
 // import axios from 'axios'
+
 
 const genreOptions = [
   { value: 'action', label: 'Action' },
@@ -14,8 +17,8 @@ const genreOptions = [
 ]
 
 function Movies() {
+  const history = useHistory()
   // const [data, setData] = React.useState(null)
-  const [bingeInfoIsShown, setBingeInfoIsShown] = React.useState(false)
   const [formData, setFormData] = React.useState({
     genres: [],
     runtime: 1,
@@ -47,12 +50,10 @@ function Movies() {
     console.log(value)
   }
 
-  //! NEED TO STOP TOGGLE OF SHOWING BINGE INFO
-
   const handleSubmit = (event) => {
     event.preventDefault()
-    setBingeInfoIsShown(!bingeInfoIsShown)
-    // window.alert(`Submitting ${JSON.stringify(formData, null, 2)}`)
+    // window.alert(`Submitting ${JSON.stringify(formData, null, 2)}
+    history.push('/binge')
 
 
   }
@@ -127,14 +128,12 @@ function Movies() {
           </form>
         </div>
         <div className="bottomhalf">
-          {bingeInfoIsShown && 
-          <div className="bingeinfo">
-            <h2>This is the binge info</h2>
-          </div>
-          }
           <div className="movies">
             <h2>This is Movie Index</h2>
-
+            {/* {data && data.map(movie => (
+              <div className="card" key={movie.name}>
+              </div>
+            ))} */}
           </div>
         </div>
       </div>
