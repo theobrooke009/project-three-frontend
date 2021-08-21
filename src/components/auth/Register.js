@@ -33,9 +33,9 @@ function Register() {
       <div className="container">
         <div className="columns">
           <form
-            className="column is-half">
+            className="column is-half"
             onSubmit={handleSubmit}
-            >
+          >
             <div className="field">
               <label className="label">Username</label>
               <div className="control">
@@ -55,7 +55,7 @@ function Register() {
               <label className="label">Email</label>
               <div className="control">
                 <input
-                  className={`input ${formErrors.email ?'is-danger' : ''}`}
+                  className={`input ${formErrors.email ? 'is-danger' : ''}`}
                   placeholder="Email"
                   onChange={handleChange}
                   name="email"
