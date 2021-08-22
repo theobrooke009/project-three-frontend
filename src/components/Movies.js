@@ -1,6 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import axios from 'axios'
 
@@ -133,7 +133,9 @@ function Movies() {
             {console.log(data)}
             {data && data.map(movie => (
               <div className="card" key={movie.title}>
-                <img src={movie.poster}></img>
+                <Link to={`/movies/${movie._id}`}>
+                  <img src={movie.poster}></img>
+                </Link>
               </div>
             ))}
           </div>
