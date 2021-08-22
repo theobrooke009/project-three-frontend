@@ -1,16 +1,16 @@
 import React from 'react'
-// import { Link, useHistory } from 'react-router-dom'
-// import { isAuthenticated, removeToken } from '../lib/auth.js'
+import { Link, useHistory } from 'react-router-dom'
+import { isAuthenticated, removeToken } from '../lib/auth.js'
 
 function Navbar() {
 
-  // const isAuth = isAuthenticated()
-  // const history = useHistory()
+  const isAuth = isAuthenticated()
+  const history = useHistory()
 
-  // const handleLogout = () => {
-  //   removeToken()
-  //   history.push('/')
-  // }
+  const handleLogout = () => {
+    removeToken()
+    history.push('/')
+  }
 
   return (
     <nav>
@@ -18,7 +18,7 @@ function Navbar() {
         <div className="navbar-container">
           <div className="logo" img src="/">
             <div className="buttons">
-              {/* {!isAuth && (
+              {!isAuth && (
                 <>
                   <Link to="/register" exact className="button is-warning">
                   Register
@@ -28,11 +28,11 @@ function Navbar() {
                   </Link>
                 </>
               )} */}
-              {/* {isAuth && (
+              {isAuth && (
                 <button className="button is-warning" onClick={handleLogout}>
                   Log Out
                 </button>
-              )} */}
+              )}
             </div>
           </div>
         </div>
