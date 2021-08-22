@@ -1,14 +1,14 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+// import { Link, useHistory } from 'react-router-dom'
 // import { isAuthenticated, removeToken } from '../lib/auth'
 
 function Home() {
   // const isAuth = isAuthenticated()
-  const history = useHistory()
-  const handleLogout = () => {
-    removeToken()
-    history.push('/')
-  }
+  // const history = useHistory()
+  // const handleLogout = () => {
+  //   removeToken()
+  //   history.push('/')
+  // }
   return (
     
     <section className="hero is-fullheight">

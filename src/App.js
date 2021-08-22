@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import axios from 'axios'
 
 // import NavBar from './components/common/Navbar.js'
 import Home from './components/common/Home.js'
@@ -10,6 +11,14 @@ import Marathon from './components/Marathon.js'
 import MovieProfile from './components/MovieProfile.js'
 
 function App() {
+
+  React.useEffect(() => {
+    const getData = async () => {
+      const res = await axios.get('/api/movies')
+      console.log(res.data)
+    }
+    getData()
+  })
   return (
     <BrowserRouter>
       {/* <NavBar /> */}
