@@ -16,7 +16,7 @@ const genreOptions = [
   { value: 'thriller', label: 'Thriller' }
 ]
 
-function Movies() {
+function Marathon() {
   const history = useHistory()
   // const [data, setData] = React.useState(null)
   const [formData, setFormData] = React.useState({
@@ -66,7 +66,7 @@ function Movies() {
       <div className="container">
         <div className="tophalf">
           <div className="title">
-            <h2>Welcome to Binge!</h2>
+            <h2>Choose Your Marathon Or Create Your Own!</h2>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="searchbar">
@@ -128,6 +128,9 @@ function Movies() {
           </form>
         </div>
         <div className="bottomhalf">
+          <div>
+            <h2>Binge Info!</h2>
+          </div>
           <div className="movies">
             <h2>This is Movie Index</h2>
             {/* {data && data.map(movie => (
@@ -141,4 +144,4 @@ function Movies() {
   )
 }
 
-export default Movies 
+export default Marathon

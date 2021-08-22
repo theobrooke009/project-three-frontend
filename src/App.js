@@ -6,6 +6,8 @@ import Home from './components/common/Home.js'
 import Movies from './components/Movies.js'
 import Register from './components/common/Register.js'
 import Login from './components/common/Login.js'
+import Marathon from './components/Marathon.js'
+import MovieProfile from './components/MovieProfile.js'
 
 function App() {
   return (
@@ -15,8 +17,14 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
+        <Route path="/movies/:movieId">
+          <MovieProfile />
+        </Route>
         <Route path="/movies">
           <Movies />
+        </Route>
+        <Route path="/marathon">
+          <Marathon />
         </Route>
         <Route path="/register">
           <Register />
