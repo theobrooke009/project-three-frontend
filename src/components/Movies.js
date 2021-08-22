@@ -2,7 +2,7 @@ import React from 'react'
 import Select from 'react-select'
 import { useHistory } from 'react-router-dom'
 
-// import axios from 'axios'
+import axios from 'axios'
 
 
 const genreOptions = [
@@ -18,7 +18,7 @@ const genreOptions = [
 
 function Movies() {
   const history = useHistory()
-  // const [data, setData] = React.useState(null)
+  const [data, setData] = React.useState(null)
   const [formData, setFormData] = React.useState({
     genres: [],
     runtime: 1,
@@ -28,15 +28,15 @@ function Movies() {
 
   //! NEED TO ADD FUNTIONALITY SO ZERO CANNOT BE SELECTED ON RUNTIME AND QUANTITY
 
-  // React.useEffect(() => {
-  //   const getData = async () => {
-  //     const res = await axios.get('/api/movies')
-  //     const movies = res.data
-  //     setData(movies)
-  //   }
-  //   getData()
+  React.useEffect(() => {
+    const getData = async () => {
+      const res = await axios.get('/api/movies')
+      const movies = res.data
+      setData(movies)
+    }
+    getData()
     
-  // }, [ ])
+  }, [ ])
 
   const handleMultiSelectChange = (selected, name) => {
     const selectedItems = selected ? selected.map(item => item.value) : []
@@ -130,10 +130,12 @@ function Movies() {
         <div className="bottomhalf">
           <div className="movies">
             <h2>This is Movie Index</h2>
-            {/* {data && data.map(movie => (
-              <div className="card" key={movie.name}>
+            {console.log(data)}
+            {data && data.map(movie => (
+              <div className="card" key={movie.title}>
+                <img src={movie.poster}></img>
               </div>
-            ))} */}
+            ))}
           </div>
         </div>
       </div>
