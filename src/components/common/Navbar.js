@@ -27,7 +27,7 @@ function Navbar() {
                   Login
                   </Link>
                 </>
-              )} */}
+              )}
               {isAuth && (
                 <button className="button is-warning" onClick={handleLogout}>
                   Log Out
