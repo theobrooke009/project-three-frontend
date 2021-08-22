@@ -15,7 +15,7 @@
 //   const token = getToken()
 //   if (!token) return false
 //   const parts = token.split('.')
-//   if (parts.lenght < 3) return false
+//   // if (parts.lenght < 3) return false
 //   return JSON.parse(parts[1])
 // }
 
