@@ -15,7 +15,11 @@
 //   const token = getToken()
 //   if (!token) return false
 //   const parts = token.split('.')
+<<<<<<< HEAD
 //   // if (parts.lenght < 3) return false
+=======
+//   if (parts.length < 3) return false
+>>>>>>> development
 //   return JSON.parse(parts[1])
 // }
 
