@@ -33,13 +33,15 @@ function Login() {
   return (
     <section className="section">
       <div className="container">
+        <p className="title has-text-centered has-text-white">Welcome Back</p>
+        <p className="title has-text-centered has-text-white is-size-5">Enter your email & password to start binge-ing</p>
         <div className="columns">
           <form
-            className="column is-half"
+            className="column is-half is-offset-one-quarter"
             onSubmit={handleSubmit}
           >
             <div className="field">
-              <label className="label">Email</label>
+              <label className="label has-text-white">Email</label>
               <div className="control">
                 <input
                   className="input"
@@ -49,7 +51,7 @@ function Login() {
               </div>
             </div>
             <div className="field">
-              <label className="label">Password</label>
+              <label className="label has-text-white">Password</label>
               <div className="control">
                 <input
                   type="password"
@@ -66,7 +68,7 @@ function Login() {
               </p>
             )}
             <div className="field">
-              <button type="submit" className="button is-fullwidth is-red">
+              <button type="submit" className="button is-fullwidth is-danger">
                 Log In Now
               </button>
             </div>

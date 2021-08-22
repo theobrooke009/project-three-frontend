@@ -31,13 +31,14 @@ function Register() {
   return (
     <section className="section">
       <div className="container">
-        <div className="columns">
+        <p className="title has-text-centered has-text-white">Get Free Access now!</p>
+        <div className="columns is-centered">
           <form
             className="column is-half"
             onSubmit={handleSubmit}
           >
             <div className="field">
-              <label className="label">Username</label>
+              <label className="label has-text-white">Username</label>
               <div className="control">
                 <input
                   className={`input ${formErrors.username ? 'is-danger' : ''}`}
@@ -52,7 +53,7 @@ function Register() {
               )}
             </div>
             <div className="field">
-              <label className="label">Email</label>
+              <label className="label has-text-white">Email</label>
               <div className="control">
                 <input
                   className={`input ${formErrors.email ? 'is-danger' : ''}`}
@@ -67,7 +68,7 @@ function Register() {
               )}
             </div>
             <div className="field">
-              <label className="label">Password</label>
+              <label className="label has-text-white">Password</label>
               <div className="control">
                 <input
                   type="password"
@@ -83,7 +84,7 @@ function Register() {
               )}
             </div>
             <div className="field">
-              <label className="label">Password Confirmation</label>
+              <label className="label has-text-white">Password Confirmation</label>
               <div className="control">
                 <input
                   type="password"
@@ -101,8 +102,8 @@ function Register() {
               )}
             </div>
             <div className="field">
-              <button type="submit" className="button is-fullwidth is-warning">
-              Register Me Now!
+              <button type="submit" className="button is-fullwidth is-danger">
+              Lets Go!
               </button>
             </div>
           </form>

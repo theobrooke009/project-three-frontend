@@ -1,5 +1,5 @@
 
-<<<<<<< HEAD
+
 export function setToken(token) {
   window.localStorage.setItem('token', token)
 }
@@ -32,7 +32,7 @@ export function isOwner(userId) {
   if (!payload) return false
   return userId === payload.sub
 }
-=======
+
 // export function setToken(token) {
 //   window.localStorage.setItem('token', token)
 // }
@@ -64,5 +64,8 @@ export function isOwner(userId) {
 //   const payload = getPayLoad()
 //   if (!payload) return false
 //   return userId === payload.sub
+
 // }
->>>>>>> development
+
+// }
+
