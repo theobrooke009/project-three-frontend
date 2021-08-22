@@ -6,6 +6,7 @@ import Home from './components/common/Home.js'
 import Movies from './components/Movies.js'
 import Register from './components/common/Register.js'
 import Login from './components/common/Login.js'
+import Marathon from './components/Marathon.js'
 
 function App() {
   return (

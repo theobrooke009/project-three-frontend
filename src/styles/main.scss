@@ -1,0 +1,25 @@
+// .navbar-container {
+//   disl
+// }
+.section {
+  display: flex;
+  background-image: url(../images/binge-movies-bg-1.jpg);
+  background-size: auto;
+  height: 800px;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  border-radius: 10px;
+}
+.hero {
+  display: flex;
+  background-image: url(../images/binge-movies-bg-1.jpg);
+  background-size: auto;
+  height: 800px;
+  align-items: center;
+}
+@import “~bulma/bulma.sass”;
