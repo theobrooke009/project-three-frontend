@@ -1,6 +1,6 @@
 // import React from 'react'
 // import { Link, useHistory } from 'react-router-dom'
-// import { isAuthenticated, removeToken } from '../lib/auth.js'
+// import { isAuthenticated, removeToken } from '../lib/auth'
 
 // function Navbar() {
 
