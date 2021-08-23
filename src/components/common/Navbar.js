@@ -13,18 +13,17 @@
 //   }
 
 //   return (
-//     <navbar>
-//       <div className="navbar is-dark">
+//     <nav>
+//       <div className="navbar-is-dark">
 //         <div className="navbar-container">
-//           <div className="navbar-item logo"> 
-//             <img src="../components/images/binge-white.png"></img>
+//           <div className="logo" img src="/">
 //             <div className="buttons">
 //               {!isAuth && (
 //                 <>
-//                   <Link to="/register" exact className="button is-danger">
+//                   <Link to="/register" exact className="button is-warning">
 //                   Register
 //                   </Link>
-//                   <Link to="/login" exact className="button is-danger">
+//                   <Link to="/login" exact className="button is-warning">
 //                   Login
 //                   </Link>
 //                 </>
@@ -38,7 +37,7 @@
 //           </div>
 //         </div>
 //       </div>
-//     </navbar>
+//     </nav>
 //   )
 // }
 

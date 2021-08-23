@@ -1,7 +1,7 @@
+@import "~bulma/bulma.sass";
 // .navbar-container {
 //   disl
 // }
-
 .section {
   display: flex;
   background-image: url(../images/binge-movies-bg-1.jpg);
@@ -9,7 +9,6 @@
   height: 800px;
   align-items: center;
 }
-
 .container {
   display: flex;
   flex-direction: column;
@@ -17,7 +16,6 @@
   padding: 30px;
   border-radius: 10px;
 }
-
 .hero {
   display: flex;
   background-image: url(../images/binge-movies-bg-1.jpg);
@@ -25,4 +23,12 @@
   height: 800px;
   align-items: center;
 }
-@import "~bulma/bulma.sass";
+
+.movie {
+  flex-wrap: wrap;
+  display: inline-block;
+  flex-direction: column;
+  .posters {
+    max-width: 200px;
+  }
+}

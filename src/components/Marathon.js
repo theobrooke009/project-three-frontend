@@ -1,8 +1,9 @@
 import React from 'react'
 import Select from 'react-select'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
-import axios from 'axios'
+// import axios from 'axios'
+
 
 const genreOptions = [
   { value: 'action', label: 'Action' },
@@ -15,9 +16,9 @@ const genreOptions = [
   { value: 'thriller', label: 'Thriller' }
 ]
 
-function Movies() {
+function Marathon() {
   const history = useHistory()
-  const [data, setData] = React.useState(null)
+  // const [data, setData] = React.useState(null)
   const [formData, setFormData] = React.useState({
     genres: [],
     runtime: 1,
@@ -27,15 +28,15 @@ function Movies() {
 
   //! NEED TO ADD FUNTIONALITY SO ZERO CANNOT BE SELECTED ON RUNTIME AND QUANTITY
 
-  React.useEffect(() => {
-    const getData = async () => {
-      const res = await axios.get('/api/movies')
-      const movies = res.data
-      setData(movies)
-    }
-    getData()
+  // React.useEffect(() => {
+  //   const getData = async () => {
+  //     const res = await axios.get('/api/movies')
+  //     const movies = res.data
+  //     setData(movies)
+  //   }
+  //   getData()
     
-  }, [ ])
+  // }, [ ])
 
   const handleMultiSelectChange = (selected, name) => {
     const selectedItems = selected ? selected.map(item => item.value) : []
@@ -65,7 +66,7 @@ function Movies() {
       <div className="container">
         <div className="tophalf">
           <div className="title">
-            <h2>Welcome to Binge!</h2>
+            <h2>Choose Your Marathon Or Create Your Own!</h2>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="searchbar">
@@ -127,15 +128,15 @@ function Movies() {
           </form>
         </div>
         <div className="bottomhalf">
+          <div>
+            <h2>Binge Info!</h2>
+          </div>
           <div className="movies">
             <h2>This is Movie Index</h2>
-            {data && data.map(movie => (
-              <Link to={`/movies/${movie._id}`} key={movie._id}>
-                <div className="movie">
-                  <img className="posters" src={movie.poster}></img>
-                </div>
-              </Link>
-            ))}
+            {/* {data && data.map(movie => (
+              <div className="card" key={movie.name}>
+              </div>
+            ))} */}
           </div>
         </div>
       </div>
@@ -143,4 +144,4 @@ function Movies() {
   )
 }
 
-export default Movies 
+export default Marathon

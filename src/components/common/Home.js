@@ -1,18 +1,16 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { isAuthenticated, removeToken } from '../lib/auth'
+// import { isAuthenticated, removeToken } from '../lib/auth'
 
 function Home() {
-
-  const isAuth = isAuthenticated()
+  // const isAuth = isAuthenticated()
   const history = useHistory()
-
   const handleLogout = () => {
     removeToken()
     history.push('/')
   }
-
   return (
+    
     <section className="hero is-fullheight">
       <div className="hero-body">
         <div className="container">
@@ -20,7 +18,7 @@ function Home() {
             Welcome To Binge
           </p>
           <div className="buttons is-centered">
-            {!isAuth && (
+            {/* {!isAuth && (
               <>
                 <Link to="/register" exact className="button is-danger">
                 Register
@@ -34,12 +32,12 @@ function Home() {
               <button className="button is-warning" onClick={handleLogout}>
                 Log Out
               </button>
-            )}
+            )} */}
           </div>
         </div>
       </div>
     </section>
+  
   )
 }
-
 export default Home
