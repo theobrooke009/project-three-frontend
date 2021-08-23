@@ -4,7 +4,6 @@ import { Link, useHistory } from 'react-router-dom'
 
 import axios from 'axios'
 
-
 const genreOptions = [
   { value: 'action', label: 'Action' },
   { value: 'animation', label: 'Animation' },
@@ -130,13 +129,12 @@ function Movies() {
         <div className="bottomhalf">
           <div className="movies">
             <h2>This is Movie Index</h2>
-            {console.log(data)}
             {data && data.map(movie => (
-              <div className="card" key={movie.title}>
-                <Link to={`/movies/${movie._id}`}>
-                  <img src={movie.poster}></img>
-                </Link>
-              </div>
+              <Link to={`/movies/${movie._id}`} key={movie._id}>
+                <div className="movie">
+                  <img className="posters" src={movie.poster}></img>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

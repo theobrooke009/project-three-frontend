@@ -24,3 +24,12 @@
   height: 800px;
   align-items: center;
 }
+
+.movie {
+  flex-wrap: wrap;
+  display: inline-block;
+  flex-direction: column;
+  .posters {
+    max-width: 200px;
+  }
+}
