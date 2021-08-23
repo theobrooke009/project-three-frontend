@@ -33,3 +33,12 @@
     max-width: 200px;
   }
 }
+
+.movie {
+  flex-wrap: wrap;
+  display: inline-block;
+  flex-direction: column;
+  .posters {
+    max-width: 200px;
+  }
+}
