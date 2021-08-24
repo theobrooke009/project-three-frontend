@@ -10,6 +10,7 @@ import Login from './components/common/Login.js'
 import Marathon from './components/Marathon.js'
 import MovieProfile from './components/MovieProfile.js'
 import Lists from './components/lib/Lists.js'
+import RecentlyAdded from './components/lib/RecentlyAdded.js'
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
         </Route>
         <Route path="/register">
           <Register />
+          <RecentlyAdded />
         </Route>
         <Route path="/login">
           <Login />

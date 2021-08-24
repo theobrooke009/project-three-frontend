@@ -34,7 +34,6 @@ function getGenreTwo(){
   return genreOptions[randomNumber].label
 }
 
-
 function Lists() {
   const [movies, setMovies] = React.useState(null)
   const [genre] = React.useState(getGenreOne())
