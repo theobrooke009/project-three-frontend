@@ -26,7 +26,7 @@ const genreOptions = [
 ]
  
  
-function Marathon() {
+function Movies() {
   // const isLoading = !movies
   // const [marathons, setMarathons] = React.useState(null)
   const [movies, setMovies] = React.useState(null)
@@ -196,5 +196,5 @@ function Marathon() {
   )
 }
  
-export default Marathon
+export default Movies
 

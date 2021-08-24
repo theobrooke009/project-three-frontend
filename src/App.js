@@ -9,6 +9,7 @@ import Register from './components/common/Register.js'
 import Login from './components/common/Login.js'
 import Marathon from './components/Marathon.js'
 import MovieProfile from './components/MovieProfile.js'
+import Lists from './components/lib/Lists.js'
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
         </Route>
         <Route path="/movies">
           <Movies />
+          <Lists />
         </Route>
         <Route path="/marathon">
           <Marathon />
