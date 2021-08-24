@@ -1,5 +1,4 @@
-
-@import '~bulma/bulma.sass';
+@import "~bulma/bulma.sass";
 // .navbar-container {
 //   disl
 // }
@@ -23,4 +22,22 @@
   background-size: auto;
   height: 800px;
   align-items: center;
+}
+
+.movie {
+  flex-wrap: wrap;
+  display: inline-block;
+  flex-direction: column;
+  .posters {
+    max-width: 200px;
+  }
+}
+
+.movie {
+  flex-wrap: wrap;
+  display: inline-block;
+  flex-direction: column;
+  .posters {
+    max-width: 200px;
+  }
 }

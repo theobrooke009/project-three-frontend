@@ -198,5 +198,3 @@ function Marathon() {
  
 export default Marathon
 
-
-```
