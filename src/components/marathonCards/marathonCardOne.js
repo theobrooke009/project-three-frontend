@@ -1,37 +1,36 @@
 import React from 'react'
 import axios from 'axios'
+// import { getOneMovie } from '../lib/api'
+import { useParams } from 'react-router-dom'
 
 
 
 function FilmOne( { marathonOne }) {
   const [movie, setMovie] = React.useState(null)
-  
+  const { movieId } = useParams()
   React.useEffect(() => {
     const getData = async () => {
-      const res = await axios.get('/api/movies')
-      setMovie(res.data)
-      console.log('get object function', res)
+      try {
+        const res = await axios.get(`/api/movies/${movieId}`)
+        setMovie(res.data)
+      } catch (err) {
+        console.log(err)
+      }
     }
     getData()
     
-  }, [ ])
 
-  console.log('movie card one', movie)
-  function getObject() {
-    console.log('movies', movie)
-    if (movie){
-      const movieObject = movie.id.includes(marathonOne)
-      
-      return movieObject
-    }
-  }
+  }, [movieId])
 
+
+  console.log('card movies', movie)
+  
   return (
     <>
       <div key={marathonOne}>
-        <h3>{getObject().title}</h3>
+        <h3>{movie.title}</h3>
         <figure>
-          <img src={getObject().poster}/>
+          <img src={movie.poster}/>
         </figure>
       </div>
     </>

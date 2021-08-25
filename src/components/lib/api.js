@@ -23,3 +23,7 @@ export function registerUser(formdata) {
 export function loginUser(formdata) {
   return axios.post(`${baseUrl}/login`, formdata)
 }
+
+export function getOneMovie(movieId) {
+  return axios.get(`${baseUrl}/movies/${movieId}`)
+}

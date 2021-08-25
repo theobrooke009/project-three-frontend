@@ -3,7 +3,7 @@ import Select from 'react-select'
 import { Link } from 'react-router-dom'
  
 import axios from 'axios'
-import MarathonCardOne from './marathonCards/MarathonCardOne.js'
+import MarathonCardOne from './marathonCards/marathonCardOne.js'
 
  
 const genreOptions = [
@@ -275,7 +275,7 @@ function Marathon() {
           <div className="movies">
             {marathonGenerated &&
             <MarathonCardOne 
-              key={marathonSelection[0]}
+              key={marathonOne}
               marathonOne = { marathonOne }/>
             }
 
