@@ -37,7 +37,18 @@
   flex-wrap: wrap;
   display: inline-block;
   flex-direction: column;
+  
   .posters {
     max-width: 200px;
   }
 }
+
+//! Come back to this! 
+
+// .hiding {
+//   display: none;
+// }
+
+// .showing:hover + .hiding {
+//     display: inline-block;
+// }

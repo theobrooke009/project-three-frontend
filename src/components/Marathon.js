@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Select from 'react-select'
+import { Link } from 'react-router-dom'
  
 import axios from 'axios'
  
@@ -25,13 +26,16 @@ const genreOptions = [
   { value: 'War', label: 'War' }
 ]
  
+const marathonSelection = []
  
 function Marathon() {
   // const isLoading = !movies
   // const [marathons, setMarathons] = React.useState(null)
+
   const [movies, setMovies] = React.useState(null)
   const [genreValue, setGenreValue] = React.useState(null)
   const [runTimeValue, setRunTimeValue] = React.useState(null)
+  const [marathonisShown, setMarathonIsShown] = useState(false)
   const [formData, setFormData] = React.useState({
     genres: [],
     runtime: 1,
@@ -99,8 +103,35 @@ function Marathon() {
       })
     }
   }
+
   
- 
+  //! Stretch goal below!
+
+  // function movieHoverOn(e) {
+  //   e.target.classList.add('hovered')
+  //   console.log('hover on movie')
+  // }
+
+  // function movieHoverOff(e) {
+  //   console.log('hover on movie')
+  //   e.target.classList.remove('hovered')
+  // }
+
+  const addMovieToMarathon = (e) => {
+    setMarathonIsShown(true)
+    if (marathonSelection.includes(e.target.id)) {
+      const index = marathonSelection.indexOf(e.target.id)
+      marathonSelection.splice(index, 1)
+      console.log('removed', marathonSelection)
+      e.target.textContent = 'Add To Marathon'
+    } else {
+      marathonSelection.push(e.target.id)
+      console.log('added', marathonSelection)
+      e.target.textContent = 'ADDED!'
+    }
+  }
+
+
   return (
     <section>
       <div className="topten">
@@ -161,16 +192,33 @@ function Marathon() {
             {genreValue &&
               movies &&
              filterGenresOne().map(movie =>
-               <div className="posters" key={movie._id} {...movie}>
-                 <h2>{movie.title} ⭐{movie.imdbRating}</h2>
-                 <img src={movie.poster}/>
-               </div>
+               <>
+                 <div 
+                   //  onMouseEnter={movieHoverOn} 
+                   //    onMouseLeave={movieHoverOff}
+                   className="posters" key={movie._id} {...movie}>
+                   <div>
+                     <h2>{movie.title}</h2>
+                     <img className="showing" src={movie.poster}/>
+                     <div className="hiding">
+                       <Link to={`/movies/${movie._id}`} key={movie._id}>
+                         <button>
+                        Movie Info
+                         </button>
+                       </Link>
+                       <button id={movie._id} onClick={addMovieToMarathon}>
+                        Add To Marathon
+                       </button>
+                     </div>
+                   </div>
+                 </div>
+               </>
              )}
             {genreValue &&
               movies &&
              filterGenresTwo().map(movie =>
                <div className="posters" key={movie._id} {...movie}>
-                 <h2>{movie.title} ⭐{movie.imdbRating}</h2>
+                 <h2>{movie.title}</h2>
                  <img src={movie.poster}/>
                </div>
              )}
@@ -178,17 +226,19 @@ function Marathon() {
               movies &&
              filterGenresThree().map(movie =>
                <div className="posters" key={movie._id} {...movie}>
-                 <h2>{movie.title} ⭐{movie.imdbRating}</h2>
+                 <h2>{movie.title}</h2>
                  <img src={movie.poster}/>
                </div>
              )}
           </div>
           <div className="movies">
-            <h2>This is Movie Index</h2>
-            {/* {data && data.map(movie => (
-             <div className="card" key={movie.name}>
-             </div>
-           ))} */}
+            <h1>Marathon Playlist</h1>
+            {marathonisShown && 
+            marathonSelection.map(marathon =>
+              <div key={marathon}>
+                <p>{marathon}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
