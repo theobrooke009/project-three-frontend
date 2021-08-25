@@ -12,6 +12,7 @@ import MovieProfile from './components/MovieProfile.js'
 import Lists from './components/lib/Lists.js'
 import RecentlyAdded from './components/lib/RecentlyAdded.js'
 import MarathonGenerator from './components/MarathonGenerator.js'
+import UserProfile from './components/UserProfile.js'
 
 function App() {
 
@@ -41,6 +42,9 @@ function App() {
         </Route>
         <Route path="/marathon">
           <Marathon />
+        </Route>
+        <Route path="/user/:userId">
+          <UserProfile />
         </Route>
         <Route path="/register">
           <Register />
