@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Select from 'react-select'
 import { Link } from 'react-router-dom'
  
@@ -26,13 +26,16 @@ const genreOptions = [
   { value: 'War', label: 'War' }
 ]
  
+const marathonSelection = []
  
 function Marathon() {
   // const isLoading = !movies
   // const [marathons, setMarathons] = React.useState(null)
+
   const [movies, setMovies] = React.useState(null)
   const [genreValue, setGenreValue] = React.useState(null)
   const [runTimeValue, setRunTimeValue] = React.useState(null)
+  const [marathonisShown, setMarathonIsShown] = useState(false)
   const [formData, setFormData] = React.useState({
     genres: [],
     runtime: 1,
@@ -100,17 +103,45 @@ function Marathon() {
       })
     }
   }
-  
-  function movieHoverOn(e) {
-    // e.target.classList.add('hovered')
-    console.log(e.target.src)
+
+  const generateMarathon = () => {
+    console.log('clicked')
+    // event.preventDefault()
+    setMarathonIsShown(true)
+    if (marathonSelection) {
+      return movies.filter(movie => {
+        return movie._id.includes(marathonSelection[0])
+      })
+    }
   }
 
-  function movieHoverOff(e) {
-    console.log(e.target.id)
-    // e.target.classList.remove('hovered')
+  
+  //! Stretch goal below!
+
+  // function movieHoverOn(e) {
+  //   e.target.classList.add('hovered')
+  //   console.log('hover on movie')
+  // }
+
+  // function movieHoverOff(e) {
+  //   console.log('hover on movie')
+  //   e.target.classList.remove('hovered')
+  // }
+
+  const addMovieToMarathon = (e) => {
+    if (marathonSelection.includes(e.target.id)) {
+      const index = marathonSelection.indexOf(e.target.id)
+      marathonSelection.splice(index, 1)
+      console.log('removed', marathonSelection)
+      e.target.textContent = 'Add To Marathon'
+    } else {
+      marathonSelection.push(e.target.id)
+      console.log('added', marathonSelection)
+      e.target.textContent = 'ADDED!'
+    }
   }
- 
+
+
   return (
     <section>
       <div className="topten">
@@ -163,62 +194,65 @@ function Marathon() {
                 </select>
               </div>
             </div>
+            <button onClick={generateMarathon}>
+              Generate Marathon!
+            </button>
           </form>
         </div>
+        
         <div className="bottomhalf">
           <div className="movie">
             <h2>Binge Info!</h2>
             {genreValue &&
               movies &&
-          filterGenresOne().map(movie =>
-            <>
-              {/* <div style={{ backgroundImage: `${movie.poster}` }}> */}
-              
-              <div onMouseEnter={movieHoverOn} 
-                onMouseLeave={movieHoverOff}
-                className="posters" key={movie._id} {...movie}>
-                {/* <div style={{ backgroundImage: `${movie.poster}` }}> */}
-                <div>
-                  <h2>{movie.title}</h2>
-                  <img className="showing" src={movie.poster}/>
-                  <div className="hiding">
-                    <Link to={`/movies/${movie._id}`} key={movie._id}>
-                      <button>
-                      Movie Info
-                      </button>
-                    </Link>
-                    <button>
-                      Add To Playlist
-                    </button>
-                  </div>
-                </div>
-              </div>
-              {/* </div> */}
-            </>
-          )}
+             filterGenresOne().map(movie =>
+               <>
+                 <div 
+                   //  onMouseEnter={movieHoverOn} 
+                   //    onMouseLeave={movieHoverOff}
+                   className="posters" key={movie._id} {...movie}>
+                   <div>
+                     <h2>{movie.title}</h2>
+                     <img className="showing" src={movie.poster}/>
+                     <div className="hiding">
+                       <Link to={`/movies/${movie._id}`} key={movie._id}>
+                         <button>
+                        Movie Info
+                         </button>
+                       </Link>
+                       <button id={movie._id} onClick={addMovieToMarathon}>
+                        Add To Marathon
+                       </button>
+                     </div>
+                   </div>
+                 </div>
+               </>
+             )}
             {genreValue &&
-            movies &&
-          filterGenresTwo().map(movie =>
-            <div className="posters" key={movie._id} {...movie}>
-              <h2>{movie.title}</h2>
-              <img src={movie.poster}/>
-            </div>
-          )}
+              movies &&
+             filterGenresTwo().map(movie =>
+               <div className="posters" key={movie._id} {...movie}>
+                 <h2>{movie.title}</h2>
+                 <img src={movie.poster}/>
+               </div>
+             )}
             {genreValue &&
-            movies &&
-          filterGenresThree().map(movie =>
-            <div className="posters" key={movie._id} {...movie}>
-              <h2>{movie.title}</h2>
-              <img src={movie.poster}/>
-            </div>
-          )}
+              movies &&
+             filterGenresThree().map(movie =>
+               <div className="posters" key={movie._id} {...movie}>
+                 <h2>{movie.title}</h2>
+                 <img src={movie.poster}/>
+               </div>
+             )}
           </div>
           <div className="movies">
-            <h2>This is Movie Index</h2>
-            {/* {data && data.map(movie => (
-            <div className="card" key={movie.name}>
-            </div>
-           ))} */}
+            <h1>Marathon Playlist</h1>
+            {marathonisShown && 
+            generateMarathon().map(movie =>
+              <div key={movie._id}>
+                <p>{movie.title}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -227,3 +261,4 @@ function Marathon() {
 }
  
 export default Marathon
+
