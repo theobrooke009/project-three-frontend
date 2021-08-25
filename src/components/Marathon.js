@@ -28,7 +28,7 @@ const genreOptions = [
   { value: 'War', label: 'War' }
 ]
  
-const marathonSelection = []
+export const marathonSelection = []
  
 function Marathon() {
   // const isLoading = !movies
