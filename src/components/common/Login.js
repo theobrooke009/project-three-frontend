@@ -23,6 +23,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+      console.log(formData)
       const { data } = await loginUser(formData)
       setToken(data.token)
       history.push('/')
@@ -50,6 +51,7 @@ function Login() {
                   <input
                     className="uk-input"
                     placeholder="Email"
+                    name="email"
                     onChange={handleChange}
                   />
                 </div>
