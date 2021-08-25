@@ -131,7 +131,7 @@ function Movies() {
               <label className="label-movies">Pick Your Genres!</label>
               <div className="control">
                 <input
-                  className="input"
+                  className="uk-input"
                   name="runtime"
                   type="number"
                   onChange={handleTimeChange}

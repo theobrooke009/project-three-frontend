@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import logo from '../../images/binge-white.png'
 
 const initialState = {
+  username: '',
   email: '',
   password: '',
   passwordConfirmation: '',
@@ -25,7 +26,7 @@ function Register() {
       await registerUser(formData)
       history.push('/login')
     } catch (err) {
-      console.log(err.response.data)
+      console.log(err)
     }
   }
 
@@ -88,7 +89,7 @@ function Register() {
                 <label className="label">Password Confirmation</label>
                 <div className="control">
                   <input
-                    type="password confirmation"
+                    type="password"
                     className={`uk-input ${formErrors.passwordConfirmation ? 'uk-text-warning' : ''}`}
                     placeholder="Password Confirmation"
                     onChange={handleChange}
