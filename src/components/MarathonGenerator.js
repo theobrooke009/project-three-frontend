@@ -1,12 +1,16 @@
-import marathonSelection from './Marathon.js'
+import { marathonSelection } from './Marathon.js'
 
 
 function MarathonGenerator() {
+  console.log(marathonSelection[0])
+  
+
   return (
     <div>
-      {console.log(marathonSelection)}
-      <h1>sup</h1>
-      <h2>{marathonSelection}</h2>
+      {marathonSelection.map(item =>
+        <img key={item} src={item}/>
+
+      )}
     </div>
     /* <div className="movies">
 <h1>Marathon Playlist</h1>

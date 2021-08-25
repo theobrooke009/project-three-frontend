@@ -1,6 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
  
 import axios from 'axios'
 import MarathonCardOne from './marathonCards/marathonCardOne.js'
@@ -28,9 +28,10 @@ const genreOptions = [
   { value: 'War', label: 'War' }
 ]
  
-const marathonSelection = []
+export let marathonSelection = []
  
 function Marathon() {
+  const history = useHistory()
   // const isLoading = !movies
   // const [marathons, setMarathons] = React.useState(null)
 
@@ -120,6 +121,7 @@ function Marathon() {
     console.log('marathon one', marathonOne)
     console.log('marathon two', marathonTwo)
     console.log('marathon three', marathonThree)
+    history.push('/marathongenerator')
     // event.preventDefault()
     // setMarathonIsShown(true)
     // if (marathonSelection) {
@@ -143,30 +145,43 @@ function Marathon() {
   // }
 
   const addMovieToMarathon = (e) => {
-    if (marathonSelection.includes(e.target.id)) {
-      const index = marathonSelection.indexOf(e.target.id)
-      marathonSelection.splice(index, 1)
+    if (marathonSelection.includes(e.target.id) && marathonSelection.includes(e.target.value)) {
+      const indexId = marathonSelection.indexOf(e.target.id)
+      marathonSelection.splice(indexId, 2)
       console.log('removed', marathonSelection)
       e.target.textContent = 'Add To Marathon'
     } else {
-      if (!marathonOne){
-        marathonSelection.push(e.target.id)
-        console.log('added', marathonSelection)
-        e.target.textContent = 'ADDED!' 
-        setMarathonOne(marathonSelection[0])
-      } else if (marathonOne && !marathonTwo) {
-        marathonSelection.push(e.target.id)
-        console.log('added', marathonSelection)
-        e.target.textContent = 'ADDED!' 
-        setMarathonTwo(marathonSelection[1])
-      } else if (marathonOne && marathonTwo && !marathonThree) {
-        marathonSelection.push(e.target.id)
-        console.log('added', marathonSelection)
-        e.target.textContent = 'ADDED!' 
-        setMarathonThree(marathonSelection[2])
-      }
+      // marathonSelection.push(e.target.id)
+      marathonSelection.push(e.target.value)  
+      console.log('added', marathonSelection)
+      e.target.textContent = 'ADDED!'
     }
   }
+  
+  // if (marathonSelection.includes(e.target.id)) {
+  //   const index = marathonSelection.indexOf(e.target.id)
+  //   marathonSelection.splice(index, 1)
+  //   console.log('removed', marathonSelection)
+  //   e.target.textContent = 'Add To Marathon'
+  // } else {
+  //   if (!marathonOne){
+  //   marathonSelection.push(e.target.id)
+  //   console.log('added', marathonSelection)
+  //   e.target.textContent = 'ADDED!' 
+  //   setMarathonOne(marathonSelection[0])
+  //   } else if (marathonOne && !marathonTwo) {
+  //     marathonSelection.push(e.target.id)
+  //     console.log('added', marathonSelection)
+  //     e.target.textContent = 'ADDED!' 
+  //     setMarathonTwo(marathonSelection[1])
+  //   } else if (marathonOne && marathonTwo && !marathonThree) {
+  //     marathonSelection.push(e.target.id)
+  //     console.log('added', marathonSelection)
+  //     e.target.textContent = 'ADDED!' 
+  //     setMarathonThree(marathonSelection[2])
+  //   }
+  // }
+  
 
 
   return (
@@ -247,7 +262,7 @@ function Marathon() {
                         Movie Info
                          </button>
                        </Link>
-                       <button id={movie._id} onClick={addMovieToMarathon}>
+                       <button id={movie.title} value={movie.poster}onClick={addMovieToMarathon}>
                         Add To Marathon
                        </button>
                      </div>
