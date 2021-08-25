@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Select from 'react-select'
 import { Link } from 'react-router-dom'
  
 import axios from 'axios'
+import MarathonCardOne from './marathonCards/MarathonCardOne.js'
+
  
 const genreOptions = [
   { value: 'Action', label: 'Action' },
@@ -35,13 +37,18 @@ function Marathon() {
   const [movies, setMovies] = React.useState(null)
   const [genreValue, setGenreValue] = React.useState(null)
   const [runTimeValue, setRunTimeValue] = React.useState(null)
-  const [marathonisShown, setMarathonIsShown] = useState(false)
+  // const [marathonisShown, setMarathonIsShown] = useState(false)
   const [formData, setFormData] = React.useState({
     genres: [],
     runtime: 1,
     breaks: '',
   
   })
+
+  const [marathonOne, setMarathonOne] = React.useState(null)
+  const [marathonTwo, setMarathonTwo] = React.useState(null)
+  const [marathonThree, setMarathonThree] = React.useState(null)
+  const [marathonGenerated, setMarathonGenerated] = React.useState(false)
  
   // React.useEffect(() => {
   //   const getMarathons = async () => {
@@ -61,6 +68,7 @@ function Marathon() {
     getData()
  
   }, [ ])
+  
 
   const handleGenreChange = (selected, name) => {
     const selectedGenres = selected ? selected.map(item => item.value) : []
@@ -74,11 +82,11 @@ function Marathon() {
     setRunTimeValue(bingeTime)
   }
 
-  const handleBreaksChange = (event) => {
-    const numberBreaks = event.target.value
-    setFormData({ ...formData, [event.target.name]: numberBreaks })
-    console.log(numberBreaks)
-  }
+  // const handleBreaksChange = (event) => {
+  //   const numberBreaks = event.target.value
+  //   setFormData({ ...formData, [event.target.name]: numberBreaks })
+  //   console.log(numberBreaks)
+  // }
 
   const filterGenresOne = () => {
     if (genreValue) {
@@ -104,16 +112,22 @@ function Marathon() {
     }
   }
 
+
   const generateMarathon = () => {
+    setMarathonGenerated(true)
+    console.log(marathonGenerated)
     console.log('clicked')
+    console.log('marathon one', marathonOne)
+    console.log('marathon two', marathonTwo)
+    console.log('marathon three', marathonThree)
     // event.preventDefault()
-    setMarathonIsShown(true)
-    if (marathonSelection) {
-      return movies.filter(movie => {
-        return movie._id.includes(marathonSelection[0])
-      })
-    }
+    // setMarathonIsShown(true)
+    // if (marathonSelection) {
+    //   return movies.filter(movie => {
+    //     return movie._id.includes(marathonSelection[0])
+    //   })
   }
+  
 
   
   //! Stretch goal below!
@@ -135,9 +149,22 @@ function Marathon() {
       console.log('removed', marathonSelection)
       e.target.textContent = 'Add To Marathon'
     } else {
-      marathonSelection.push(e.target.id)
-      console.log('added', marathonSelection)
-      e.target.textContent = 'ADDED!'
+      if (!marathonOne){
+        marathonSelection.push(e.target.id)
+        console.log('added', marathonSelection)
+        e.target.textContent = 'ADDED!' 
+        setMarathonOne(marathonSelection[0])
+      } else if (marathonOne && !marathonTwo) {
+        marathonSelection.push(e.target.id)
+        console.log('added', marathonSelection)
+        e.target.textContent = 'ADDED!' 
+        setMarathonTwo(marathonSelection[1])
+      } else if (marathonOne && marathonTwo && !marathonThree) {
+        marathonSelection.push(e.target.id)
+        console.log('added', marathonSelection)
+        e.target.textContent = 'ADDED!' 
+        setMarathonThree(marathonSelection[2])
+      }
     }
   }
 
@@ -169,7 +196,7 @@ function Marathon() {
               </div>
             </div>
             <div className="field">
-              <label className="label">Pick Your Binge Time! (Minutes)</label>
+              <label className="label">Pick Your Marathon Time! (Minutes)</label>
               <div className="control">
                 <input
                   className="input"
@@ -180,7 +207,7 @@ function Marathon() {
                 />
               </div>
             </div>
-            <div className="field">
+            {/* <div className="field">
               <label className="label">Pick The Amount Of Breaks!</label>
               <div className="select">
                 <select
@@ -193,7 +220,7 @@ function Marathon() {
                   <option value="2">2</option>
                 </select>
               </div>
-            </div>
+            </div> */}
             <button onClick={generateMarathon}>
               Generate Marathon!
             </button>
@@ -202,7 +229,7 @@ function Marathon() {
         
         <div className="bottomhalf">
           <div className="movie">
-            <h2>Binge Info!</h2>
+            <h2>Film Info!</h2>
             {genreValue &&
               movies &&
              filterGenresOne().map(movie =>
@@ -246,16 +273,16 @@ function Marathon() {
              )}
           </div>
           <div className="movies">
-            <h1>Marathon Playlist</h1>
-            {marathonisShown && 
-            generateMarathon().map(movie =>
-              <div key={movie._id}>
-                <p>{movie.title}</p>
-              </div>
-            )}
+            {marathonGenerated &&
+            <MarathonCardOne 
+              key={marathonSelection[0]}
+              marathonOne = { marathonOne }/>
+            }
+
           </div>
         </div>
       </div>
+
     </section>
   )
 }
