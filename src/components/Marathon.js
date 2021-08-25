@@ -104,6 +104,17 @@ function Marathon() {
     }
   }
 
+  const generateMarathon = () => {
+    console.log('clicked')
+    // event.preventDefault()
+    setMarathonIsShown(true)
+    if (marathonSelection) {
+      return movies.filter(movie => {
+        return movie._id.includes(marathonSelection[0])
+      })
+    }
+  }
+
   
   //! Stretch goal below!
 
@@ -118,7 +129,6 @@ function Marathon() {
   // }
 
   const addMovieToMarathon = (e) => {
-    setMarathonIsShown(true)
     if (marathonSelection.includes(e.target.id)) {
       const index = marathonSelection.indexOf(e.target.id)
       marathonSelection.splice(index, 1)
@@ -184,8 +194,12 @@ function Marathon() {
                 </select>
               </div>
             </div>
+            <button onClick={generateMarathon}>
+              Generate Marathon!
+            </button>
           </form>
         </div>
+        
         <div className="bottomhalf">
           <div className="movie">
             <h2>Binge Info!</h2>
@@ -234,9 +248,9 @@ function Marathon() {
           <div className="movies">
             <h1>Marathon Playlist</h1>
             {marathonisShown && 
-            marathonSelection.map(marathon =>
-              <div key={marathon}>
-                <p>{marathon}</p>
+            generateMarathon().map(movie =>
+              <div key={movie._id}>
+                <p>{movie.title}</p>
               </div>
             )}
           </div>
