@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 
 import axios from 'axios'
 
+
 const genreOptions = [
   { value: 'action', label: 'Action' },
   { value: 'animation', label: 'Animation' },
@@ -58,77 +59,84 @@ function Movies() {
   }
   
   return (
-    <section>
-      <div className="topten">
-        <h2>Top 10</h2>
+    <div className="main uk-section">
+      <div className="sidebar uk-width-2-5">
+        <div className="topten uk-text-center">Top 10</div>
       </div>
-      <div className="container">
-        <div className="tophalf">
-          <div className="title">
-            <h2>Welcome to Binge!</h2>
+      <div className="form-section uk-width-3-5">
+        <div className="create">Create Your Binge Session</div>
+        <form onSubmit={handleSubmit}>
+          <div className="searchbar">
+            <div className="field">
+              <label className="label-movies">Pick Your Genres!</label>
+              <div className="control">
+                <Select
+                  options={genreOptions}
+                  isMulti
+                  onChange={selected =>
+                    handleMultiSelectChange(selected, 'genres')
+                  }
+                  value={formData.genres.map(item => ({ label: item[0].toUpperCase() + item.substring(1), value: item }))}
+                />
+              </div>
+            </div>
           </div>
-          <form onSubmit={handleSubmit}>
-            <div className="searchbar">
-              <div className="field">
-                <label className="label">Pick Your Genres!</label>
-                <div className="control">
-                  <Select
-                    options={genreOptions}
-                    isMulti
-                    onChange={selected =>
-                      handleMultiSelectChange(selected, 'genres')
-                    }
-                    value={formData.genres.map(item => ({ label: item[0].toUpperCase() + item.substring(1), value: item }))}
-                  />
+          <div className="field">
+            <label className="label-movies">Pick Your Binge Time! (Minutes)</label>
+            <div className="control">
+              <input
+                className="uk-input"
+                name="runtime"
+                type="number"
+                onChange={handleChange}
+                value={formData.runtime}
+              />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label-movies">Pick Your Quantity Of Movies!</label>
+            <div className="control">
+              <input
+                className="uk-input"
+                name="quantity"
+                type="number"
+                onChange={handleChange}
+                value={formData.quantity}
+              />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label-movies">Pick The Amount Of Breaks!</label>
+            <div className="control">
+              <input
+                className="uk-input"
+                name="breaks"
+                type="number"
+                onChange={handleChange}
+                value={formData.breaks}
+              />
+            </div>
+            <div className="field">
+              <button type="submit" className="create-binge uk-button uk-button-danger uk-button-large uk-width-1-1 uk-margin-small-top">
+                  Create your Binge!
+              </button>
+            </div>
+          </div>
+        </form> 
+        <div className="index uk-section">
+          <div className="movie-index">This is Movie Index</div>
+          <div className="uk-child-width-1-2@m" uk-grid>
+            <div>
+              <div className="uk-card uk-card-default">
+                <div classN="uk-card-media-top">
+                  {/* <img src={movie.poster} alt={movie.title} /> */}
+                </div>
+                <div className="uk-card-body">
+                  <h3 className="uk-card-title">Media Top</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
                 </div>
               </div>
             </div>
-            <div className="field">
-              <label className="label">Pick Your Binge Time! (Minutes)</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="runtime"
-                  type="number"
-                  onChange={handleChange}
-                  value={formData.runtime}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Pick Your Quantity Of Movies!</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="quantity"
-                  type="number"
-                  onChange={handleChange}
-                  value={formData.quantity}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Pick The Amount Of Breaks!</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="breaks"
-                  type="number"
-                  onChange={handleChange}
-                  value={formData.breaks}
-                />
-              </div>
-              <div className="field">
-                <button className="button" type="submit">
-                Binge It!
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div className="bottomhalf">
-          <div className="movies">
-            <h2>This is Movie Index</h2>
             {data && data.map(movie => (
               <Link to={`/movies/${movie._id}`} key={movie._id}>
                 <div className="movie">
@@ -139,7 +147,8 @@ function Movies() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
+    
   )
 }
 

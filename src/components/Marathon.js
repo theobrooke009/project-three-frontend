@@ -1,63 +1,116 @@
 import React from 'react'
 import Select from 'react-select'
-import { useHistory } from 'react-router-dom'
-
-// import axios from 'axios'
-
-
+import { Link } from 'react-router-dom'
+ 
+import axios from 'axios'
+ 
 const genreOptions = [
-  { value: 'action', label: 'Action' },
-  { value: 'animation', label: 'Animation' },
-  { value: 'comedy', label: 'Comedy' },
-  { value: 'drama', label: 'Drama' },
-  { value: 'horror', label: 'Horror' },
-  { value: 'romance', label: 'Romance' },
-  { value: 'scifi', label: 'Sci-Fi' },
-  { value: 'thriller', label: 'Thriller' }
+  { value: 'Action', label: 'Action' },
+  { value: 'Adventure', label: 'Adventure' },
+  { value: 'Animation', label: 'Animation' },
+  { value: 'Biography', label: 'Biography' },
+  { value: 'Comedy', label: 'Comedy' },
+  { value: 'Crime', label: 'Crime' },
+  { value: 'Documentary', label: 'Documentary' },
+  { value: 'Drama', label: 'Drama' },
+  { value: 'Family', label: 'Family' },
+  { value: 'Fantasy', label: 'Fantasy' },
+  { value: 'History', label: 'History' },
+  { value: 'Horror', label: 'Horror' },
+  { value: 'Music', label: 'Music' },
+  { value: 'Mystery', label: 'Mystery' },
+  { value: 'Romance', label: 'Romance' },
+  { value: 'Sci-Fi', label: 'Sci-Fi' },
+  { value: 'Short', label: 'Short' },
+  { value: 'Thriller', label: 'Thriller' },
+  { value: 'War', label: 'War' }
 ]
-
+ 
+ 
 function Marathon() {
-  const history = useHistory()
-  // const [data, setData] = React.useState(null)
+  // const isLoading = !movies
+  // const [marathons, setMarathons] = React.useState(null)
+  const [movies, setMovies] = React.useState(null)
+  const [genreValue, setGenreValue] = React.useState(null)
+  const [runTimeValue, setRunTimeValue] = React.useState(null)
   const [formData, setFormData] = React.useState({
     genres: [],
     runtime: 1,
-    quantity: 1,
     breaks: '',
+  
   })
-
-  //! NEED TO ADD FUNTIONALITY SO ZERO CANNOT BE SELECTED ON RUNTIME AND QUANTITY
-
+ 
   // React.useEffect(() => {
-  //   const getData = async () => {
-  //     const res = await axios.get('/api/movies')
-  //     const movies = res.data
-  //     setData(movies)
+  //   const getMarathons = async () => {
+  //     const res = await axios.get('/api/marathons')
+  //     const movies = res.marathons
+  //     setMarathons(res.data)
   //   }
-  //   getData()
-    
+  //   getMarathons()
+  // console.log(marathons)
   // }, [ ])
+ 
+  React.useEffect(() => {
+    const getData = async () => {
+      const res = await axios.get('/api/movies')
+      setMovies(res.data)
+    }
+    getData()
+ 
+  }, [ ])
 
-  const handleMultiSelectChange = (selected, name) => {
-    const selectedItems = selected ? selected.map(item => item.value) : []
-    setFormData({ ...formData, [name]: selectedItems })
-    console.log(selectedItems)
+  const handleGenreChange = (selected, name) => {
+    const selectedGenres = selected ? selected.map(item => item.value) : []
+    setFormData({ ...formData, [name]: selectedGenres })
+    setGenreValue(selectedGenres)
+  }
+ 
+  const handleTimeChange = (event) => {
+    const bingeTime = event.target.value
+    setFormData({ ...formData, [event.target.name]: bingeTime })
+    setRunTimeValue(bingeTime)
   }
 
-  const handleChange = (event) => {
-    const value = event.target.value
-    setFormData({ ...formData, [event.target.name]: value })
-    console.log(value)
+  const handleBreaksChange = (event) => {
+    const numberBreaks = event.target.value
+    setFormData({ ...formData, [event.target.name]: numberBreaks })
+    console.log(numberBreaks)
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    // window.alert(`Submitting ${JSON.stringify(formData, null, 2)}
-    history.push('/marathon')
-
-
+  const filterGenresOne = () => {
+    if (genreValue) {
+      return movies.filter(movie => {
+        return movie.genre.includes(genreValue[0]) && movie.runtime < runTimeValue
+      })
+    }
+  }
+ 
+  const filterGenresTwo = () => {
+    if (genreValue) {
+      return movies.filter(movie => {
+        return movie.genre.includes(genreValue[1]) && movie.runtime < runTimeValue
+      })
+    }
+  }
+ 
+  const filterGenresThree = () => {
+    if (genreValue) {
+      return movies.filter(movie => {
+        return movie.genre.includes(genreValue[2]) && movie.runtime < runTimeValue
+      })
+    }
   }
   
+  function movieHoverOn(e) {
+    // e.target.classList.add('hovered')
+    console.log(e.target.src)
+  }
+
+  function movieHoverOff(e) {
+    console.log(e.target.id)
+    // e.target.classList.remove('hovered')
+  }
+ 
   return (
     <section>
       <div className="topten">
@@ -68,7 +121,7 @@ function Marathon() {
           <div className="title">
             <h2>Choose Your Marathon Or Create Your Own!</h2>
           </div>
-          <form onSubmit={handleSubmit}>
+          <form>
             <div className="searchbar">
               <div className="field">
                 <label className="label">Pick Your Genres!</label>
@@ -77,7 +130,7 @@ function Marathon() {
                     options={genreOptions}
                     isMulti
                     onChange={selected =>
-                      handleMultiSelectChange(selected, 'genres')
+                      handleGenreChange(selected, 'genres')
                     }
                     value={formData.genres.map(item => ({ label: item[0].toUpperCase() + item.substring(1), value: item }))}
                   />
@@ -91,57 +144,86 @@ function Marathon() {
                   className="input"
                   name="runtime"
                   type="number"
-                  onChange={handleChange}
+                  onChange={handleTimeChange}
                   value={formData.runtime}
                 />
               </div>
             </div>
             <div className="field">
-              <label className="label">Pick Your Quantity Of Movies!</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="quantity"
-                  type="number"
-                  onChange={handleChange}
-                  value={formData.quantity}
-                />
-              </div>
-            </div>
-            <div className="field">
               <label className="label">Pick The Amount Of Breaks!</label>
-              <div className="control">
-                <input
-                  className="input"
+              <div className="select">
+                <select
                   name="breaks"
-                  type="number"
-                  onChange={handleChange}
+                  onChange={handleBreaksChange}
                   value={formData.breaks}
-                />
-              </div>
-              <div className="field">
-                <button className="button" type="submit">
-                Binge It!
-                </button>
+                >
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
               </div>
             </div>
           </form>
         </div>
         <div className="bottomhalf">
-          <div>
+          <div className="movie">
             <h2>Binge Info!</h2>
+            {genreValue &&
+              movies &&
+          filterGenresOne().map(movie =>
+            <>
+              {/* <div style={{ backgroundImage: `${movie.poster}` }}> */}
+              
+              <div onMouseEnter={movieHoverOn} 
+                onMouseLeave={movieHoverOff}
+                className="posters" key={movie._id} {...movie}>
+                {/* <div style={{ backgroundImage: `${movie.poster}` }}> */}
+                <div>
+                  <h2>{movie.title}</h2>
+                  <img className="showing" src={movie.poster}/>
+                  <div className="hiding">
+                    <Link to={`/movies/${movie._id}`} key={movie._id}>
+                      <button>
+                      Movie Info
+                      </button>
+                    </Link>
+                    <button>
+                      Add To Playlist
+                    </button>
+                  </div>
+                </div>
+              </div>
+              {/* </div> */}
+            </>
+          )}
+            {genreValue &&
+            movies &&
+          filterGenresTwo().map(movie =>
+            <div className="posters" key={movie._id} {...movie}>
+              <h2>{movie.title}</h2>
+              <img src={movie.poster}/>
+            </div>
+          )}
+            {genreValue &&
+            movies &&
+          filterGenresThree().map(movie =>
+            <div className="posters" key={movie._id} {...movie}>
+              <h2>{movie.title}</h2>
+              <img src={movie.poster}/>
+            </div>
+          )}
           </div>
           <div className="movies">
             <h2>This is Movie Index</h2>
             {/* {data && data.map(movie => (
-              <div className="card" key={movie.name}>
-              </div>
-            ))} */}
+            <div className="card" key={movie.name}>
+            </div>
+           ))} */}
           </div>
         </div>
       </div>
     </section>
   )
 }
-
+ 
 export default Marathon

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router'
 
 import { loginUser } from '../lib/api'
 import { setToken } from '../lib/auth'
+import logo from '../../images/binge-white.png'
 
 function Login() {
   const history = useHistory()
@@ -31,46 +32,52 @@ function Login() {
   }
 
   return (
-    <section className="section">
-      <div className="container">
-        <div className="columns">
-          <form
-            className="column is-half"
-            onSubmit={handleSubmit}
-          >
-            <div className="field">
-              <label className="label">Email</label>
-              <div className="control">
-                <input
-                  className="input"
-                  placeholder="Email"
-                  onChange={handleChange}
-                />
+    <section className="main">
+      <div className="uk-container-large">
+        <div className="home-container uk-position-center">
+          {/* <p className="welcome ">
+                Login Below!
+          </p> */}
+          <div className="binge-logo">
+            <img src={logo} alt="Welcome To Binge"/>
+            <form
+              className="column is-half"
+              onSubmit={handleSubmit}
+            >
+              <div className="field">
+                <label className="label">Email</label>
+                <div className="control">
+                  <input
+                    className="uk-input"
+                    placeholder="Email"
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="field">
-              <label className="label">Password</label>
-              <div className="control">
-                <input
-                  type="password"
-                  className="input"
-                  placeholder="Password"
-                  name="password"
-                  onChange={handleChange}
-                />
+              <div className="field">
+                <label className="label">Password</label>
+                <div className="control">
+                  <input
+                    type="password"
+                    className="uk-input"
+                    placeholder="Password"
+                    name="password"
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
-            </div>
-            {isError && (
-              <p className="help is-danger">
-                Email or Password were incorrect
-              </p>
-            )}
-            <div className="field">
-              <button type="submit" className="button is-fullwidth is-red">
-                Log In Now
-              </button>
-            </div>
-          </form>
+              {isError && (
+                <p className="help is-danger">
+                  Email or Password were incorrect
+                </p>
+              )}
+              <div className="field">
+                <button type="submit" className="uk-button uk-button-danger uk-button-large uk-width-1-1 uk-margin-small-top uk-margin-small-bottom">
+                  Log In Now
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>

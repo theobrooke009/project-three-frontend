@@ -1,27 +1,81 @@
-@import "~bulma/bulma.sass";
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+@import "uikit/src/scss/uikit-theme.scss";
+// @import "~bulma/bulma.sass";
 // .navbar-container {
 //   disl
 // }
-.section {
+
+.main {
   display: flex;
+  flex-direction: row;
   background-image: url(../images/binge-movies-bg-1.jpg);
-  background-size: auto;
+  background-size: cover;
   height: 800px;
-  align-items: center;
 }
-.container {
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 30px;
-  border-radius: 10px;
+
+.welcome {
+  font-size: 28px;
+  text-transform: capitalize;
+  color: rgb(255, 255, 255);
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: 15px;
 }
-.hero {
-  display: flex;
-  background-image: url(../images/binge-movies-bg-1.jpg);
-  background-size: auto;
-  height: 800px;
-  align-items: center;
+
+.binge-logo {
+  width: 400px;
+}
+
+.binge-logo-home {
+  width: 450px;
+}
+
+.topten {
+  margin: 30px;
+  font-size: 28px;
+  text-transform: capitalize;
+  font-style: italic;
+  font-weight: lighter;
+  background-color: rgba(0, 0, 0, 0.61);
+  color: #ffffff;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.form-section {
+  margin: 30px;
+  font-size: 28px;
+  text-transform: capitalize;
+  font-style: italic;
+  font-weight: lighter;
+  color: #ffffff;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.create-binge {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.label {
+  color: white;
+}
+
+.label-movies {
+  color: white;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.movie-index {
+  margin: 30px;
+  font-size: 28px;
+  text-transform: capitalize;
+  font-style: italic;
+  font-weight: lighter;
+  color: #ffffff;
 }
 
 .movie {
