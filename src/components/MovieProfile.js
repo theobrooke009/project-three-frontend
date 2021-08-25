@@ -34,14 +34,13 @@ function MovieProfile() {
             </div>
             <div className= "column is-half">
               <h2>{movie.title}</h2>
-              <p>{movie.year}</p>
-              <p>{movie.rated}</p>
-              <p>{movie.genre}</p>
-              <p>{movie.director}</p>
-              <p>{movie.writer}</p>
-              <p>{movie.actors}</p>
-              <p>{movie.plot}</p>
-              <p>{movie.imdbRating}</p>
+              <p><strong>Genre:</strong> {movie.genre}</p>
+              <p><strong>Directed by:</strong> {movie.director}</p>
+              <p><strong>Actors:</strong> {movie.actors}</p>
+              <p><strong>Runtime:</strong> {movie.runtime} mins</p>
+              <p><strong>Rated:</strong> {movie.rated}</p>
+              <p><strong>IMDB Rating:</strong> {movie.imdbrating}</p>
+              <p><i>{movie.plot}</i></p>
             </div>
           </div>
           }
