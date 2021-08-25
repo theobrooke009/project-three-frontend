@@ -28,11 +28,7 @@ const genreOptions = [
   { value: 'War', label: 'War' }
 ]
  
-<<<<<<< HEAD
-export const marathonSelection = []
-=======
 export let marathonSelection = []
->>>>>>> development
  
 function Marathon() {
   const history = useHistory()
@@ -127,7 +123,7 @@ function Marathon() {
     console.log('marathon three', marathonThree)
     history.push('/marathongenerator')
     // event.preventDefault()
-    // setMarathonIsShown(true)
+    // setMarathonIsShown(true)ß
     // if (marathonSelection) {
     //   return movies.filter(movie => {
     //     return movie._id.includes(marathonSelection[0])
