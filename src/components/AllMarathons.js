@@ -1,8 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 
+import { titleSelection } from './Marathon.js'
+
 function AllMarathons() {
   const [marathons, setMarathons] = React.useState()
+  console.log(marathons)
   
   React.useEffect(() => {
     const getData = async () => {
@@ -14,13 +17,13 @@ function AllMarathons() {
   }, [ ])
 
   
-  console.log('marathons appear', marathons)
+  console.log('marathons appear', titleSelection)
   return (
     <div>
       {marathons && marathons.map(marathon => {
-        return <h2 key={marathon._id}>{marathon.name}</h2>
+        <h2 key={marathon._id}>{marathon}</h2>
       })}
-
+      
     </div>
   )
 }

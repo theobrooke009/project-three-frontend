@@ -13,10 +13,14 @@ function MarathonGenerator() {
   const [playlistData, setPlaylistData] = React.useState(titleSelection)
   const [newFilm, setNewFilm] = React.useState('')
   const history = useHistory()
-
+ 
   
   const handleChange = e => {
+    console.log(e)
+    console.log('value', playlistData)
+
     setPlaylistData({ ...playlistData, [e.target.name]: e.target.value })
+    // setPlaylistData([ ...playlistData ])
     console.log('here 18', playlistData)
   } 
 
@@ -29,7 +33,8 @@ function MarathonGenerator() {
     e.preventDefault()
     console.log(playlistData)
     try {
-      const { data } = await axios.post('/api/marathons', newFilm)
+      const { data } = await axios.post('/api/marathons', playlistData)
+      console.log(titleSelection)
       history.push('/marathons')
       console.log(data)
     } catch (err) {
