@@ -1,21 +1,21 @@
 import { titleSelection, posterSelection } from './Marathon.js'
 import React from 'react'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
 
 // const initialState = {
 //   'name': 'hi',
 // }
 
-console.log(titleSelection)
 
 function MarathonGenerator() {
   const [playlistData, setPlaylistData] = React.useState(titleSelection)
-
+  const history = useHistory()
   
   const handleChange = e => {
     setPlaylistData({ ...playlistData, [e.target.name]: e.target.value })
-    console.log(playlistData)
+    console.log('here 18', playlistData)
   } 
 
   const handleSubmit = async e => {

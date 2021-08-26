@@ -118,6 +118,7 @@ function Marathon() {
   //   console.log('hover on movie')
   //   e.target.classList.remove('hovered')
   // }
+  // const marathonOfMovies = []
 
   const addMovieToMarathon = (e) => {
     if (titleSelection.includes(e.target.className) &&
@@ -132,15 +133,15 @@ function Marathon() {
       console.log('removed', titleSelection, runtimeSelection, posterSelection)
       e.target.textContent = 'Add To Marathon'
     } else {
-      titleSelection.push(e.target.className)
+      titleSelection.push(e.target.className) 
       runtimeSelection.push(e.target.id)
       posterSelection.push(e.target.value)
        
       console.log('added', titleSelection, runtimeSelection, posterSelection)
       e.target.textContent = 'ADDED!'
     }
-  }
-  
+    // marathonOfMovies.push(e.target.className)
+  }  
 
   return (
     <section>

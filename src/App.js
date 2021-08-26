@@ -14,6 +14,7 @@ import RecentlyAdded from './components/lib/RecentlyAdded.js'
 import MarathonGenerator from './components/MarathonGenerator.js'
 import UserProfile from './components/UserProfile.js'
 import Splash from './components/common/Splash.js'
+import AllMarathons from './components/AllMarathons.js'
 
 function App() {
 
@@ -56,6 +57,9 @@ function App() {
         </Route>
         <Route path="/splash">
           <Splash />
+        </Route>
+        <Route path="/marathons">
+          <AllMarathons />
         </Route>
       </Switch>
     </BrowserRouter>
