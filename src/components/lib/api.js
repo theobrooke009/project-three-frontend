@@ -3,7 +3,7 @@ import { getToken } from './auth.js'
 
 const baseUrl = '/api'
 
-function headers() {
+export function headers() {
   return {
     headers: { Authorization: `Bearer ${getToken()}` },
   }
@@ -12,6 +12,10 @@ function headers() {
 export function createBinge(formdata) {
   return axios.post(`${baseUrl}/binge`, formdata, headers())
 }
+
+// export function createMarathon(marathon) {
+//   return axios.post(`${baseUrl}/marathons`, marathon)
+// }
 
 
 // * Auth requests

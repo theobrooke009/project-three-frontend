@@ -1,6 +1,7 @@
 import { titleSelection, posterSelection } from './Marathon.js'
 import React from 'react'
-// import axios from 'axios'
+import axios from 'axios'
+
 
 // const initialState = {
 //   'name': 'hi',
@@ -20,13 +21,13 @@ function MarathonGenerator() {
   const handleSubmit = async e => {
     e.preventDefault()
     console.log(playlistData)
-    // try {
-    //   const { data } = await axios.post('/api/players', playlistData)
-    //   history.push(`/players/${data._id}`)
-    //   console.log(data._id)
-    // } catch (err) {
-    //   console.log(err)
-    // }
+    try {
+      const { data } = await axios.post('/api/marathons', playlistData)
+      history.push('/marathons')
+      console.log(data)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -53,7 +54,7 @@ function MarathonGenerator() {
         </button>
         <div className="field">
           <label className="label"></label>
-          <div className="control">
+          <div id="hideme" className="control">
             <input
               className="input"
               placeholder=""
