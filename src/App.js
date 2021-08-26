@@ -13,6 +13,7 @@ import Lists from './components/lib/Lists.js'
 import RecentlyAdded from './components/lib/RecentlyAdded.js'
 import MarathonGenerator from './components/MarathonGenerator.js'
 import UserProfile from './components/UserProfile.js'
+import Splash from './components/common/Splash.js'
 
 function App() {
 
@@ -52,6 +53,9 @@ function App() {
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/splash">
+          <Splash />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -33,8 +33,8 @@ function Login() {
   }
 
   return (
-    <section className="main">
-      <div className="uk-container-large">
+    <section className="main uk-height-viewport">
+      <div className="uk-container-large uk-height-1-1">
         <div className="home-container uk-position-center">
           {/* <p className="welcome ">
                 Login Below!
