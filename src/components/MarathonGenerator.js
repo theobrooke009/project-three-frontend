@@ -1,7 +1,7 @@
 import { titleSelection, posterSelection } from './Marathon.js'
 import React from 'react'
 import axios from 'axios'
-
+import { useHistory } from 'react-router-dom'
 
 // const initialState = {
 //   'name': 'hi',
@@ -11,6 +11,8 @@ console.log(titleSelection)
 
 function MarathonGenerator() {
   const [playlistData, setPlaylistData] = React.useState(titleSelection)
+  const [newFilm, setNewFilm] = React.useState('')
+  const history = useHistory()
 
   
   const handleChange = e => {
@@ -18,11 +20,16 @@ function MarathonGenerator() {
     console.log(playlistData)
   } 
 
+  const handleFilm = e => {
+    setNewFilm({ ...newFilm, [e.target.name]: e.target.value })
+    console.log(newFilm)
+  } 
+
   const handleSubmit = async e => {
     e.preventDefault()
     console.log(playlistData)
     try {
-      const { data } = await axios.post('/api/marathons', playlistData)
+      const { data } = await axios.post('/api/marathons', newFilm)
       history.push('/marathons')
       console.log(data)
     } catch (err) {
@@ -59,7 +66,7 @@ function MarathonGenerator() {
               className="input"
               placeholder=""
               name="title"
-              onChange={handleChange}
+              onChange={handleFilm}
               value={titleSelection}
             />
           </div>
