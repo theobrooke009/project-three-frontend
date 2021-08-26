@@ -3,11 +3,11 @@ import React from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
+
 // const initialState = {
 //   'name': 'hi',
 // }
 
-console.log(titleSelection)
 
 function MarathonGenerator() {
   const [playlistData, setPlaylistData] = React.useState(titleSelection)
@@ -17,7 +17,7 @@ function MarathonGenerator() {
   
   const handleChange = e => {
     setPlaylistData({ ...playlistData, [e.target.name]: e.target.value })
-    console.log(playlistData)
+    console.log('here 18', playlistData)
   } 
 
   const handleFilm = e => {
