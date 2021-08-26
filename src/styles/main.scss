@@ -69,6 +69,19 @@
   font-weight: normal;
 }
 
+.splash-container {
+  margin-top: 70px;
+}
+
+.splash-text {
+  font-size: 28px;
+  color: rgb(255, 255, 255);
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: 15px;
+  margin-top: -170px;
+}
+
 .movie-index {
   margin: 30px;
   font-size: 28px;
@@ -87,11 +100,16 @@
   }
 }
 
+.uk-card {
+  background-color: rgba(0, 0, 0, 0.452);
+  color: white;
+}
+
 .movie {
   flex-wrap: wrap;
   display: inline-block;
   flex-direction: column;
-  
+
   .posters {
     max-width: 200px;
   }

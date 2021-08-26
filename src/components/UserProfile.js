@@ -22,23 +22,27 @@ function UserProfile() {
 
 
   return (
-    <section className= "section">
-      <div id="playerProfileContainer" className= "container">
-        <div id="playerProfileColumns" className= "columns">
-          {user && 
+    <section className= "main uk-height-viewport">
+      <div className="uk-container-large uk-height-1-1">
+        <div className="uk-container uk-column-1-2 uk-position-center">
+          <div id="playerProfileContainer" className= "container">
+            <div id="playerProfileColumns" className= "columns">
+              {user && 
           <div>
-            <div className= "column is-half">
+            <div className= "avatar-section">
               <figure className= "image">
                 <img src={user.avatar}/>
               </figure>
             </div>
-            <div className= "column is-half">
+            <div className= "user-section">
               <h2>{user.username}</h2>
               <p><strong>Email:</strong> {user.email}</p>
 
             </div>
           </div>
-          }
+              }
+            </div>
+          </div>
         </div>
       </div>
     </section>
