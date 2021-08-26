@@ -3,8 +3,6 @@ import Select from 'react-select'
 import { Link, useHistory } from 'react-router-dom'
  
 import axios from 'axios'
-import MarathonCardOne from './marathonCards/marathonCardOne.js'
-
  
 const genreOptions = [
   { value: 'Action', label: 'Action' },
@@ -28,28 +26,22 @@ const genreOptions = [
   { value: 'War', label: 'War' }
 ]
  
-export let marathonSelection = []
+export const titleSelection = []
+export const runtimeSelection = []
+export const posterSelection = []
  
 function Marathon() {
   const history = useHistory()
-  // const isLoading = !movies
-  // const [marathons, setMarathons] = React.useState(null)
 
   const [movies, setMovies] = React.useState(null)
   const [genreValue, setGenreValue] = React.useState(null)
   const [runTimeValue, setRunTimeValue] = React.useState(null)
-  // const [marathonisShown, setMarathonIsShown] = useState(false)
   const [formData, setFormData] = React.useState({
     genres: [],
     runtime: 1,
     breaks: '',
   
   })
-
-  const [marathonOne, setMarathonOne] = React.useState(null)
-  const [marathonTwo, setMarathonTwo] = React.useState(null)
-  const [marathonThree, setMarathonThree] = React.useState(null)
-  const [marathonGenerated, setMarathonGenerated] = React.useState(false)
  
   // React.useEffect(() => {
   //   const getMarathons = async () => {
@@ -83,11 +75,6 @@ function Marathon() {
     setRunTimeValue(bingeTime)
   }
 
-  // const handleBreaksChange = (event) => {
-  //   const numberBreaks = event.target.value
-  //   setFormData({ ...formData, [event.target.name]: numberBreaks })
-  //   console.log(numberBreaks)
-  // }
 
   const filterGenresOne = () => {
     if (genreValue) {
@@ -115,19 +102,7 @@ function Marathon() {
 
 
   const generateMarathon = () => {
-    setMarathonGenerated(true)
-    console.log(marathonGenerated)
-    console.log('clicked')
-    console.log('marathon one', marathonOne)
-    console.log('marathon two', marathonTwo)
-    console.log('marathon three', marathonThree)
     history.push('/marathongenerator')
-    // event.preventDefault()
-    // setMarathonIsShown(true)
-    // if (marathonSelection) {
-    //   return movies.filter(movie => {
-    //     return movie._id.includes(marathonSelection[0])
-    //   })
   }
   
 
@@ -145,44 +120,27 @@ function Marathon() {
   // }
 
   const addMovieToMarathon = (e) => {
-    if (marathonSelection.includes(e.target.id) && marathonSelection.includes(e.target.value)) {
-      const indexId = marathonSelection.indexOf(e.target.id)
-      marathonSelection.splice(indexId, 2)
-      console.log('removed', marathonSelection)
+    if (titleSelection.includes(e.target.className) &&
+      (runtimeSelection.includes(e.target.id)) && 
+      (posterSelection.includes(e.target.value))) {
+      const titleIndex = titleSelection.indexOf(e.target.className)
+      const runtimeIndex = runtimeSelection.indexOf(e.target.id)
+      const posterIndex = posterSelection.indexOf(e.target.value)
+      titleSelection.splice(titleIndex, 1)
+      runtimeSelection.splice(runtimeIndex, 1)
+      posterSelection.splice(posterIndex, 1)
+      console.log('removed', titleSelection, runtimeSelection, posterSelection)
       e.target.textContent = 'Add To Marathon'
     } else {
-      // marathonSelection.push(e.target.id)
-      marathonSelection.push(e.target.value)  
-      console.log('added', marathonSelection)
+      titleSelection.push(e.target.className)
+      runtimeSelection.push(e.target.id)
+      posterSelection.push(e.target.value)
+       
+      console.log('added', titleSelection, runtimeSelection, posterSelection)
       e.target.textContent = 'ADDED!'
     }
   }
   
-  // if (marathonSelection.includes(e.target.id)) {
-  //   const index = marathonSelection.indexOf(e.target.id)
-  //   marathonSelection.splice(index, 1)
-  //   console.log('removed', marathonSelection)
-  //   e.target.textContent = 'Add To Marathon'
-  // } else {
-  //   if (!marathonOne){
-  //   marathonSelection.push(e.target.id)
-  //   console.log('added', marathonSelection)
-  //   e.target.textContent = 'ADDED!' 
-  //   setMarathonOne(marathonSelection[0])
-  //   } else if (marathonOne && !marathonTwo) {
-  //     marathonSelection.push(e.target.id)
-  //     console.log('added', marathonSelection)
-  //     e.target.textContent = 'ADDED!' 
-  //     setMarathonTwo(marathonSelection[1])
-  //   } else if (marathonOne && marathonTwo && !marathonThree) {
-  //     marathonSelection.push(e.target.id)
-  //     console.log('added', marathonSelection)
-  //     e.target.textContent = 'ADDED!' 
-  //     setMarathonThree(marathonSelection[2])
-  //   }
-  // }
-  
-
 
   return (
     <section>
@@ -250,8 +208,6 @@ function Marathon() {
              filterGenresOne().map(movie =>
                <>
                  <div 
-                   //  onMouseEnter={movieHoverOn} 
-                   //    onMouseLeave={movieHoverOff}
                    className="posters" key={movie._id} {...movie}>
                    <div>
                      <h2>{movie.title}</h2>
@@ -262,7 +218,11 @@ function Marathon() {
                         Movie Info
                          </button>
                        </Link>
-                       <button id={movie.title} value={movie.poster}onClick={addMovieToMarathon}>
+                       <button 
+                         className={movie.title}
+                         id={movie.runtime} 
+                         value={movie.poster}
+                         onClick={addMovieToMarathon}>
                         Add To Marathon
                        </button>
                      </div>
@@ -286,14 +246,6 @@ function Marathon() {
                  <img src={movie.poster}/>
                </div>
              )}
-          </div>
-          <div className="movies">
-            {marathonGenerated &&
-            <MarathonCardOne 
-              key={marathonOne}
-              marathonOne = { marathonOne }/>
-            }
-
           </div>
         </div>
       </div>
