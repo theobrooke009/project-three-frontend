@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import axios from 'axios'
 
-// import NavBar from './components/common/Navbar.js'
+import NavBar from './components/common/Navbar.js'
 import Home from './components/common/Home.js'
 import Movies from './components/Movies.js'
 import Register from './components/common/Register.js'
@@ -27,7 +27,7 @@ function App() {
   })
   return (
     <BrowserRouter>
-      {/* <NavBar /> */}
+      <NavBar />
       <Switch>
         <Route exact path="/">
           <Home />

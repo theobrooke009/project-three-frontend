@@ -23,14 +23,6 @@
   letter-spacing: 15px;
 }
 
-a {
-  color: white;
-}
-
-#loginerror {
-  color: red;
-}
-
 .binge-logo {
   width: 400px;
 }
@@ -39,10 +31,13 @@ a {
   width: 450px;
 }
 
+.topten-container {
+  margin-top: 80px;
+}
+
 .topten {
-  margin: 30px;
-  font-size: 28px;
-  text-transform: capitalize;
+  margin-top: 30px;
+  font-size: 42px;
   font-style: italic;
   font-weight: lighter;
   background-color: rgba(0, 0, 0, 0.61);
@@ -51,15 +46,44 @@ a {
   padding-right: 20px;
 }
 
-.form-section {
+.marathon {
   margin: 30px;
   font-size: 28px;
-  text-transform: capitalize;
   font-style: italic;
-  font-weight: lighter;
+  font-weight: bold;
   color: #ffffff;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.marathon-info {
+  font-size: 18px;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.topten-movies {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.form-container {
+  margin: 30px;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: lighter;
+  background-color: rgba(255, 0, 0, 0.267);
+  color: #ffffff;
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+  border-radius: 10px;
+}
+
+.control {
+  color: black;
 }
 
 .create-binge {
@@ -111,23 +135,45 @@ a {
 .uk-card {
   background-color: rgba(0, 0, 0, 0.452);
   color: white;
+  width: 150px;
+  height: 150px;
 }
 
-.movie {
-  flex-wrap: wrap;
-  display: inline-block;
-  flex-direction: column;
+// .movie {
+//   flex-wrap: wrap;
+//   display: inline-block;
+//   flex-direction: column;
 
-  .posters {
-    max-width: 200px;
-  }
-}
-
-// #hideme {
-//   display: none;
+//   .posters {
+//     max-width: 200px;
+//   }
 // }
 
-//! Come back to this! 
+#hideme {
+  display: none;
+}
+
+.user-section {
+  h2 {
+    color: white;
+  }
+  color: white;
+}
+
+#movieinfo {
+  h2 {
+    color: white;
+  }
+  color: white;
+}
+
+#movieprofilecard {
+  background-color: black;
+  padding: 20px;
+  
+}
+
+//! Come back to this!
 
 // .hiding {
 //   display: none;
