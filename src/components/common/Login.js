@@ -26,7 +26,7 @@ function Login() {
       console.log(formData)
       const { data } = await loginUser(formData)
       setToken(data.token)
-      history.push('/movies')
+      history.push('/splash')
     } catch (err) {
       setIsError(true)
     }

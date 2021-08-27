@@ -1,5 +1,5 @@
 import React from 'react'
-// import { Link, useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 // import { isAuthenticated, removeToken } from '../lib/auth'
 
 // import logo from '../../images/binge-white.png'

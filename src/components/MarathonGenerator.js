@@ -13,7 +13,19 @@ function MarathonGenerator() {
   const [playlistData, setPlaylistData] = React.useState(titleSelection)
   const [newFilm, setNewFilm] = React.useState('')
   const history = useHistory()
- 
+  // const [formData, setFormData] = React.useState({
+  //   titleone: '',
+  //   titletwo: '',
+  //   titlethree: '',
+  //   titlefour: '',
+  //   titlefive: '',
+  //   titlesix: '',
+  //   titleseven: '',
+  //   titleeight: '',
+  //   titlenine: '',
+  //   titleten: '',
+  //   name: '',
+  // })
   
   const handleChange = e => {
     console.log(e)
