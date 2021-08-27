@@ -27,7 +27,6 @@ function MarathonGenerator() {
   const handleSubmit = async e => {
     e.preventDefault()
     console.log(playlistData)
-    playlistData.push(titleSelection)
     try {
       const { data } = await axios.post('/api/marathons', playlistData)
       console.log(titleSelection)
@@ -39,52 +38,57 @@ function MarathonGenerator() {
   }
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <div className="field">
-          <label className="label"></label>
-          <div className="control">
-            <h2>Create Your Marathon Name:</h2>
-            <input
-              className="input"
-              placeholder="Name"
-              name="name"
-              onChange={handleChange}
-              value={playlistData.name}
-            />
+    <div className="main uk-section uk-height-viewport">
+      <div className="uk-container uk-column-1-1 uk-height-1-1">
+        <div className="form-section uk-container">
+          <div className="form-container">  
+            <form onSubmit={handleSubmit}>
+              <div className="field">
+                <label className="label"></label>
+                <div className="control">
+                  <div className="marathon uk-text-center">Create Your Marathon Name:</div>
+                  <input
+                    className="uk-input"
+                    placeholder="Name"
+                    name="name"
+                    onChange={handleChange}
+                    value={playlistData.name}
+                  />
+                </div>
+              </div>
+              <button 
+                type="submit" 
+                className="uk-button uk-button-danger uk-button-large uk-width-1-1 uk-margin-medium-top uk-margin-medium-bottom"
+                onSubmit={handleSubmit}>
+                    Submit Marathon!
+              </button>
+              <div className="field">
+                <label className="label-movies"></label>
+                <div id="hideme" className="control">
+                  <input
+                    className="uk-input"
+                    placeholder=""
+                    name="title"
+                    onChange={handleChange}
+                    value={titleSelection}
+                  />
+                </div>
+              </div>
+              <div>
+              </div>
+              <div>
+                {posterSelection.map(poster =>
+                  <img key={poster} value={playlistData.poster} src={poster}/>
+                )}
+              </div>
+            </form>
           </div>
         </div>
-        <button 
-          type="submit" 
-          className="button is-black is-fullwidth"
-          onSubmit={handleSubmit}>
-              Submit Marathon!
-        </button>
-        <div className="field">
-          <label className="label"></label>
-          <div id="hideme" className="control">
-            <input
-              className="input"
-              placeholder=""
-              name="title"
-              onChange={handleChange}
-              value={titleSelection}
-            />
-          </div>
-        </div>
-        <div>
-        </div>
-        <div>
-          {posterSelection.map(poster =>
-            <img key={poster} value={playlistData.poster} src={poster}/>
-          )}
-        </div>
-      </form>
-    </section>
+      </div>
+    </div>
   
 
   )
 }
 
 export default MarathonGenerator
-
