@@ -76,6 +76,7 @@
   color: #ffffff;
   padding-left: 20px;
   padding-right: 20px;
+  display: none;
 }
 
 .marathon {
@@ -210,6 +211,40 @@
 
 #hideme {
   display: none;
+}
+
+// .movie {
+//   flex-wrap: wrap;
+//   display: inline-block;
+//   flex-direction: column;
+
+//   .posters {
+//     max-width: 200px;
+//   }
+// }
+
+#hideme {
+  display: none;
+}
+
+.user-section {
+  h2 {
+    color: white;
+  }
+  color: white;
+}
+
+#movieinfo {
+  h2 {
+    color: white;
+  }
+  color: white;
+}
+
+#movieprofilecard {
+  background-color: black;
+  padding: 20px;
+  
 }
 
 //! Come back to this!

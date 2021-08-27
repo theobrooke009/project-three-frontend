@@ -22,9 +22,9 @@ function MovieProfile() {
 
 
   return (
-    <section className= "section">
-      <div id="playerProfileContainer" className= "container">
-        <div id="playerProfileColumns" className= "columns">
+    <section className= "main uk-height-viewport">
+      <div className="uk-container-large uk-height-1-1">
+        <div id="movieprofilecard" className= "uk-container uk-column-1-2 uk-position-center">
           {movie && 
           <div>
             <div className= "column is-half">
@@ -32,7 +32,7 @@ function MovieProfile() {
                 <img src={movie.poster}/>
               </figure>
             </div>
-            <div className= "column is-half">
+            <div id= "movieinfo" className= "column is-half">
               <h2>{movie.title}</h2>
               <p><strong>Genre:</strong> {movie.genre}</p>
               <p><strong>Directed by:</strong> {movie.director}</p>

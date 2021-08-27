@@ -1,16 +1,11 @@
 // import React from 'react'
 // import { Link, useHistory } from 'react-router-dom'
-// import { isAuthenticated, removeToken } from '../lib/auth'
+// // import { isAuthenticated, removeToken } from '../lib/auth'
 
 // function Navbar() {
 
-//   const isAuth = isAuthenticated()
-//   const history = useHistory()
+//   // const isAuth = isAuthenticated()
 
-//   const handleLogout = () => {
-//     removeToken()
-//     history.push('/')
-//   }
 
 //   return (
 //     <nav>
@@ -18,21 +13,20 @@
 //         <div className="navbar-container">
 //           <div className="logo" img src="/">
 //             <div className="buttons">
-//               {!isAuth && (
-//                 <>
-//                   <Link to="/register" exact className="button is-warning">
-//                   Register
-//                   </Link>
-//                   <Link to="/login" exact className="button is-warning">
-//                   Login
-//                   </Link>
-//                 </>
-//               )}
-//               {isAuth && (
-//                 <button className="button is-warning" onClick={handleLogout}>
+//               <>
+//                 <Link to="/movies" exact className="button is-warning">
+//                   Sprint
+//                 </Link>
+//                 <Link to="/marathon" exact className="button is-warning">
+//                   Marathon
+//                 </Link>
+//                 <Link to="/marathons" exact className="button is-warning">
+//                   Created Marathons
+//                 </Link>
+//                 <Link to="/" exact className="button is-warning">
 //                   Log Out
-//                 </button>
-//               )}
+//                 </Link>
+//               </>
 //             </div>
 //           </div>
 //         </div>
