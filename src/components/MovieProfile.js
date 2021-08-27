@@ -28,7 +28,7 @@ function MovieProfile() {
           {movie && 
           <div>
             <div className= "column is-half">
-              <figure className= "image">
+              <figure className= "image profile-poster">
                 <img src={movie.poster}/>
               </figure>
             </div>

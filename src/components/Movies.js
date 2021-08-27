@@ -58,7 +58,6 @@ function Movies() {
     getData()
  
   }, [ ])
-
   const handleGenreChange = (selected, name) => {
     const selectedGenres = selected ? selected.map(item => item.value) : []
     setFormData({ ...formData, [name]: selectedGenres })
@@ -70,8 +69,6 @@ function Movies() {
     setFormData({ ...formData, [event.target.name]: bingeTime })
     setRunTimeValue(bingeTime)
   }
-
-
   const filterGenresOne = () => {
     if (genreValue) {
       return movies.filter(movie => {
@@ -98,88 +95,130 @@ function Movies() {
   
  
   return (
-    <div className="main uk-section">
-      <div className="sidebar uk-width-2-5">
-        <div className="topten uk-text-center">Top 10</div>
-      </div>
-      <div className="container">
-        <div className="tophalf">
-          <div className="title">
-            <h2>Choose Your Sprint!</h2>
-            <p>In a rush with nothing to watch? Pick your genres and time below to help choose your perfect movie!</p>
+    <div className="main uk-section uk-height-viewport uk-background-cover">
+      <div className="uk-container uk-column-1-1 uk-height-1-1">
+        <div className="topten-container uk-position-center">
+        </div>
+        <div className="form-section uk-container">
+          <div className="tophalf">
+            <div className="marathon uk-text-center">Choose Your Sprint!</div>
+            <div className="marathon-info uk-text-center">In a rush with nothing to watch? Pick your genres and time below to help choose your perfect movie!</div>
           </div>
           <form>
-            <div className="searchbar">
+            <div className="form-container">
+              <label className="label-movies">Choose Your Genres!</label>
+              <div className="searchbar">
+                <div className="field">
+                  <div className="control">
+                    <Select
+                      options={genreOptions}
+                      isMulti
+                      onChange={selected =>
+                        handleGenreChange(selected, 'genres')
+                      }
+                      value={formData.genres.map(item => ({ label: item[0].toUpperCase() + item.substring(1), value: item }))}
+                    />
+                  </div>
+                </div>
+              </div>
               <div className="field">
-                <label className="label">Pick Your Genres!</label>
+                <label className="label-movies">Select How Much Time You Have!</label>
                 <div className="control">
-                  <Select
-                    options={genreOptions}
-                    isMulti
-                    onChange={selected =>
-                      handleGenreChange(selected, 'genres')
-                    }
-                    value={formData.genres.map(item => ({ label: item[0].toUpperCase() + item.substring(1), value: item }))}
+                  <input
+                    className="uk-input"
+                    name="runtime"
+                    type="number"
+                    onChange={handleTimeChange}
+                    value={formData.runtime}
                   />
                 </div>
               </div>
             </div>
-            <div className="field">
-              <label className="label-movies">Choose Your Maximum Time! (Mins)</label>
-              <div className="control">
-                <input
-                  className="uk-input"
-                  name="runtime"
-                  type="number"
-                  onChange={handleTimeChange}
-                  value={formData.runtime}
-                />
-              </div>
-            </div>
           </form>
         </div>
-        <div className="bottomhalf">
-          <div className="movie">
+        {/* </div> */}
+        <div className="topten-movies uk-container-large">
+          <div className="movie uk-grid uk-grid-medium uk-width-1-1">
+            {genreValue &&
+          movies &&
+          filterGenresOne().map(movie =>
+            <>
+              <div 
+                className="genre-filters posters movie uk-grid uk-grid-medium" key={movie._id} {...movie}>
+                <div className="movie-cards">
+                  {/* <h2 className="title">{movie.title}</h2> */}
+                  {/* <p>:star:{movie.imdbrating}</p> */}
+                  <img className="showing" src={movie.poster}/>
+                  <div className="hiding uk-button-group">
+                    <Link to={`/movies/${movie._id}`} key={movie._id}>
+                      <button className="uk-button uk-button-secondary uk-button-small">
+                    Watch Now
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
             {genreValue &&
               movies &&
-             filterGenresOne().map(movie =>
-               <Link to={`/movies/${movie._id}`} key={movie._id}>
-                 <div className="posters" key={movie._id} {...movie}>
-                   <h2>{movie.title}</h2>
-                   <p>⭐{movie.imdbrating}</p>
-                   <img src={movie.poster}/>
-                 </div>
-               </Link>
-             )}
+              filterGenresTwo().map(movie =>
+                <>
+                  <div 
+                    className="genre-filters posters movie uk-grid uk-grid-medium" key={movie._id} {...movie}>
+                    <div className="movie-cards">
+                      {/* <h2 className="title">{movie.title}</h2> */}
+                      {/* <p>:star:{movie.imdbrating}</p> */}
+                      <img className="showing" src={movie.poster}/>
+                      <div className="hiding uk-button-group">
+                        <Link to={`/movies/${movie._id}`} key={movie._id}>
+                          <button className="uk-button uk-button-secondary uk-button-small">
+                        Watch Now
+                          </button>
+                        </Link>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
             {genreValue &&
-              movies &&
-             filterGenresTwo().map(movie =>
-               <Link to={`/movies/${movie._id}`} key={movie._id}>
-                 <div className="posters" key={movie._id} {...movie}>
-                   <h2>{movie.title}</h2>
-                   <p>⭐{movie.imdbrating}</p>
-                   <img src={movie.poster}/>
-                 </div>
-               </Link>
-             )}
-            {genreValue &&
-              movies &&
-             filterGenresThree().map(movie =>
-               <Link to={`/movies/${movie._id}`} key={movie._id}>
-                 <div className="posters" key={movie._id} {...movie}>
-                   <h2>{movie.title}</h2>
-                   <p>⭐{movie.imdbrating}</p>
-                   <img src={movie.poster}/>
-                 </div>
-               </Link>
-             )}
+            movies &&
+            filterGenresThree().map(movie =>
+              <>
+                <div 
+                  className="genre-filters posters movie uk-grid uk-grid-medium" key={movie._id} {...movie}>
+                  <div className="movie-cards">
+                    {/* <h2 className="title">{movie.title}</h2> */}
+                    {/* <p>:star:{movie.imdbrating}</p> */}
+                    <img className="showing" src={movie.poster}/>
+                    <div className="hiding uk-button-group">
+                      <Link to={`/movies/${movie._id}`} key={movie._id}>
+                        <button className="uk-button uk-button-secondary uk-button-small">
+                      Watch Now
+                        </button>
+                      </Link>
+                      
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
+          {/* <div className="movies">
+            <h2>This is Movie Index</h2>
+            {/* {data && data.map(movie => (
+          <div className="card" key={movie.name}>
+          </div>
+        ))} */}
+          {/* </div> */}
         </div>
       </div>
     </div>
+ 
     
   )
+  
 }
  
 export default Movies
-
