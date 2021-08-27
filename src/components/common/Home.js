@@ -11,19 +11,19 @@ function Home() {
   //   removeToken()
   //   history.push('/')
   // }
-  const history = useHistory()
-  const [formData, setFormData] = React.useState(initialState)
-  const [formErrors, setFromErrors] = React.useState(initialState)
+  // const history = useHistory()
+  // const [formData, setFormData] = React.useState(initialState)
+  // const [formErrors, setFromErrors] = React.useState(initialState)
 
-  const handleSubmit = async e => {
-    e.preventDefault()
-    try {
-      await registerUser(formData)
-      history.push('/login')
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // const handleSubmit = async e => {
+  //   e.preventDefault()
+  //   try {
+  //     await registerUser(formData)
+  //     history.push('/login')
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
   return (
     
     <section className="main uk-height-viewport">

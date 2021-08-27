@@ -6,12 +6,20 @@
 //   disl
 // }
 
+// body { 
+//   background-image: url(../images/binge-movies-bg-1.jpg);
+//   background-size: ;
+//   background-repeat: repeat;
+//   height: auto;
+// }
+
 .main {
   display: flex;
   flex-direction: row;
   background-image: url(../images/binge-movies-bg-1.jpg);
-  background-size: cover;
-  height: 800px;
+  background-size: contain;
+  background-repeat: repeat;
+
 }
 
 .welcome {
@@ -23,13 +31,29 @@
   letter-spacing: 15px;
 }
 
-a {
-  color: white;
+.uk-button-small {
+
+  background-color: rgb(176, 23, 54);
+
 }
 
-#loginerror {
-  color: red;
+.movie-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
+
+.uk-button-secondary {
+  margin: 10px 5px;
+  text-align: center;
+
+  font-size: 10px;
+  padding: 0, 5px;
+
+
+}
+
 
 .binge-logo {
   width: 400px;
@@ -39,10 +63,13 @@ a {
   width: 450px;
 }
 
+.topten-container {
+  margin-top: 80px;
+}
+
 .topten {
-  margin: 30px;
-  font-size: 28px;
-  text-transform: capitalize;
+  margin-top: 30px;
+  font-size: 42px;
   font-style: italic;
   font-weight: lighter;
   background-color: rgba(0, 0, 0, 0.61);
@@ -51,15 +78,71 @@ a {
   padding-right: 20px;
 }
 
-.form-section {
+.marathon {
   margin: 30px;
   font-size: 28px;
-  text-transform: capitalize;
   font-style: italic;
-  font-weight: lighter;
+  font-weight: bold;
   color: #ffffff;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.topten-movies {
+  display: flex;
+  justify-content: center;
+}
+
+.marathon-info {
+  font-size: 18px;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.genre-filters {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-card {
+  display: inline;
+  .marathon-images {
+    margin: 10px;
+    max-width: 200px;
+    height: auto;
+  }
+}
+
+.topten-movies {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.movie {
+  display: flex;
+  width: 4000px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form-container {
+  margin: 30px;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: lighter;
+  background-color: rgba(255, 0, 0, 0.267);
+  color: #ffffff;
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+  border-radius: 10px;
+}
+
+.control {
+  color: black;
 }
 
 .create-binge {
@@ -111,23 +194,25 @@ a {
 .uk-card {
   background-color: rgba(0, 0, 0, 0.452);
   color: white;
+  width: 150px;
+  height: 150px;
 }
 
 .movie {
-  flex-wrap: wrap;
-  display: inline-block;
-  flex-direction: column;
 
-  .posters {
-    max-width: 200px;
-  }
+  justify-content: center;
+
+}
+.title {
+  color: white;
+  font-size: 20px;
 }
 
-// #hideme {
-//   display: none;
-// }
+#hideme {
+  display: none;
+}
 
-//! Come back to this! 
+//! Come back to this!
 
 // .hiding {
 //   display: none;

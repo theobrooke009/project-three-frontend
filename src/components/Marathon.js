@@ -113,103 +113,121 @@ function Marathon() {
   }  
 
   return (
-    <section>
-      <div className="topten">
-        <h2>Top 10</h2>
-      </div>
-      <div className="container">
-        <div className="tophalf">
-          <div className="title">
-            <h2>Choose Your Marathon Or Create Your Own!</h2>
-            <p>Plan your perfect movie night in with our marathon creator! Browse through marathons users have already created or choose your own!</p>
+    <div className="main uk-section uk-height-viewport uk-background-cover">
+      <div className="uk-container uk-column-1-1 uk-height-1-1">
+        <div className="topten-container uk-position-center">
+          {/* <div className="topten uk-text-center">Binge: Top 10</div> */}
+          {/* <div className="topten-movies uk-grid uk-grid-medium">
+            <div className="uk-card uk-card-default uk-card-body">Item</div>
+            <div className="uk-card uk-card-default uk-card-body">Item</div>
+            <div className="uk-card uk-card-default uk-card-body">Item</div>
+            <div className="uk-card uk-card-default uk-card-body">Item</div>
+            <div className="uk-card uk-card-default uk-card-body">Item</div>
+            <div className="uk-card uk-card-default uk-card-body">Item</div>
+            <div className="uk-card uk-card-default uk-card-body">Item</div>
+            <div className="uk-card uk-card-default uk-card-body">Item</div>
+            <div className="uk-card uk-card-default uk-card-body">Item</div>
+            <div className="uk-card uk-card-default uk-card-body">Item</div>
+          </div> */}
+        </div>
+
+
+
+        <div className="form-section uk-container">
+          <div className="tophalf">
+            <div className="marathon uk-text-center">Choose Your Marathon Or Create Your Own!</div>
+            <div className="marathon-info uk-text-center">Plan your perfect movie night in with our marathon creator! Browse through marathons users have already created or choose your own!</div>
           </div>
           <form>
-            <div className="searchbar">
-              <div className="field">
-                <label className="label">Pick Your Genres!</label>
-                <div className="control">
-                  <Select
-                    options={genreOptions}
-                    isMulti
-                    onChange={selected =>
-                      handleGenreChange(selected, 'genres')
-                    }
-                    value={formData.genres.map(item => ({ label: item[0].toUpperCase() + item.substring(1), value: item }))}
-                  />
+            <div className="form-container">
+              <div className="searchbar">
+                <div className="field">
+                  <label className="label-movies">Pick Your Genres!</label>
+                  <div className="control">
+                    <Select
+                      options={genreOptions}
+                      isMulti
+                      onChange={selected =>
+                        handleGenreChange(selected, 'genres')
+                      }
+                      value={formData.genres.map(item => ({ label: item[0].toUpperCase() + item.substring(1), value: item }))}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            {/* <div className="field">
-              <label className="label">Pick The Amount Of Breaks!</label>
-              <div className="select">
-                <select
-                  name="breaks"
-                  onChange={handleBreaksChange}
-                  value={formData.breaks}
-                >
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                </select>
-              </div>
-            </div> */}
-            <button onClick={generateMarathon}>
+              {/* <div className="field">
+                <label className="label">Pick The Amount Of Breaks!</label>
+                <div className="select">
+                  <select
+                    name="breaks"
+                    onChange={handleBreaksChange}
+                    value={formData.breaks}
+                  >
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                </div>
+              </div> */}
+              <button className="uk-button-secondary uk-button-large" onClick={generateMarathon}>
               Generate Marathon!
-            </button>
+              </button>
+            </div>
           </form>
         </div>
-        <div className="bottomhalf">
-          <div className="movie">
+        <div className="topten-movies">
+          <div className="movie uk-grid uk-grid-medium">
             {genreValue &&
-              movies &&
-             filterGenresOne().map(movie =>
-               <>
-                 <div 
-                   className="posters" key={movie._id} {...movie}>
-                   <div>
-                     <h2>{movie.title}</h2>
-                     <p>⭐{movie.imdbrating}</p>
-                     <img className="showing" src={movie.poster}/>
-                     <div className="hiding">
-                       <Link to={`/movies/${movie._id}`} key={movie._id}>
-                         <button>
-                        Movie Info
-                         </button>
-                       </Link>
-                       <button 
-                         className={movie.title}
-                         id={movie.runtime} 
-                         value={movie.poster}
-                         onClick={addMovieToMarathon}>
-                        Add To Marathon
-                       </button>
-                     </div>
-                   </div>
-                 </div>
-               </>
-             )}
+                movies &&
+                filterGenresOne().map(movie =>
+                  <>
+                    <div 
+                      className="genre-filters posters movie uk-grid uk-grid-medium" key={movie._id} {...movie}>
+                      <div className="movie-cards">
+                        {/* <h2 className="title">{movie.title}</h2> */}
+                        {/* <p>⭐{movie.imdbrating}</p> */}
+                        <img className="showing" src={movie.poster}/>
+                        <div className="hiding uk-button-group">
+                          <Link to={`/movies/${movie._id}`} key={movie._id}>
+                            <button className="uk-button uk-button-secondary uk-button-small">
+                          Info
+                            </button>
+                          </Link>
+                          <button 
+                            className="uk-button uk-button-secondary uk-button-small"
+                            id={movie.runtime} 
+                            value={movie.poster}
+                            onClick={addMovieToMarathon}>
+                          Add
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
             {genreValue &&
-              movies &&
-             filterGenresTwo().map(movie =>
-               <div className="posters" key={movie._id} {...movie}>
-                 <h2>{movie.title}</h2>
-                 <p>⭐{movie.imdbrating}</p>
-                 <img src={movie.poster}/>
-               </div>
-             )}
+                movies &&
+                filterGenresTwo().map(movie =>
+                  <div className="posters movie uk-grid uk-grid-medium" key={movie._id} {...movie}>
+                    {/* <h2 className="title">{movie.title}</h2> */}
+                    {/* <p>⭐{movie.imdbrating}</p> */}
+                    <img src={movie.poster}/>
+                  </div>
+                )}
             {genreValue &&
-              movies &&
-             filterGenresThree().map(movie =>
-               <div className="posters" key={movie._id} {...movie}>
-                 <h2>{movie.title}</h2>
-                 <p>⭐{movie.imdbrating}</p>
-                 <img src={movie.poster}/>
-               </div>
-             )}
+                movies &&
+                filterGenresThree().map(movie =>
+                  <div className="posters movie uk-grid uk-grid-medium" key={movie._id} {...movie}>
+                    {/* <h2 className="title">{movie.title}</h2> */}
+                    {/* <p>⭐{movie.imdbrating}</p> */}
+                    <img src={movie.poster}/>
+                  </div>
+                )}
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  
   )
 }
  
