@@ -16,7 +16,7 @@ function Splash() {
     <section className="main uk-height-viewport">
       <div className="uk-container-large uk-height-1-1">
         <p className="splash-text uk-position-center">
-              Marathon or Sprint
+              Marathon or Sprint?
         </p>
         <div className="splash-container uk-column-1-2 uk-position-center">
           <div className="uk-card uk-card-default ">
@@ -32,12 +32,10 @@ function Splash() {
                 </div>
               </div>
               <div className="uk-card-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <p>Plan your perfect movie night in with our marathon creator! Browse through marathons users have already created or choose your own!</p>
               </div>
               <div className="uk-card-footer">
                 <a href="/marathon" className="uk-button uk-text-danger uk-button-text">Lets Do This!</a>
-
-
                 <div className="uk-card uk-card-secondary">
                   <div className="uk-card-header">
                     <div className="uk-grid-small uk-flex-middle" uk-grid>
@@ -50,7 +48,7 @@ function Splash() {
                     </div>
                   </div>
                   <div className="uk-card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                    <p>In a rush with nothing to watch? Pick the amount of time you have available and we will do the rest! Providing you with multiple options for movies to watch under your specific timeframe!</p>
                   </div>
                   <div className="uk-card-footer">
                     <a href="/movies" className="uk-button uk-text-success uk-button-text">Its Go Time!</a>

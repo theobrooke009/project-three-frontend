@@ -21,7 +21,7 @@ function AllMarathons() {
   return (
     <div>
       {marathons && marathons.map(marathon => {
-        <h2 key={marathon._id}>{marathon}</h2>
+        <h2 key={marathon._id}>{marathon.muffin}</h2>
       })}
       
     </div>
