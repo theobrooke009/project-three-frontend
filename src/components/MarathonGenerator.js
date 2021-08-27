@@ -4,14 +4,9 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
 
-// const initialState = {
-//   'name': 'hi',
-// }
-
-
 function MarathonGenerator() {
   const [playlistData, setPlaylistData] = React.useState(titleSelection)
-  const [newFilm, setNewFilm] = React.useState('')
+  // const [newFilm, setNewFilm] = React.useState('')
   const history = useHistory()
   // const [formData, setFormData] = React.useState({
   //   titleone: '',
@@ -28,7 +23,7 @@ function MarathonGenerator() {
   // })
   
   const handleChange = e => {
-    console.log(e)
+    // console.log(playlistData.name)
     console.log('value', playlistData)
 
     setPlaylistData({ ...playlistData, [e.target.name]: e.target.value })
@@ -36,14 +31,15 @@ function MarathonGenerator() {
     console.log('here 18', playlistData)
   } 
 
-  const handleFilm = e => {
-    setNewFilm({ ...newFilm, [e.target.name]: e.target.value })
-    console.log(newFilm)
-  } 
+  // const handleFilm = e => {
+  //   setNewFilm({ ...newFilm, [e.target.name]: e.target.value })
+  //   console.log(e.target.name)
+  // } 
 
   const handleSubmit = async e => {
     e.preventDefault()
     console.log(playlistData)
+    playlistData.push(titleSelection)
     try {
       const { data } = await axios.post('/api/marathons', playlistData)
       console.log(titleSelection)
@@ -83,7 +79,7 @@ function MarathonGenerator() {
               className="input"
               placeholder=""
               name="title"
-              onChange={handleFilm}
+              onChange={handleChange}
               value={titleSelection}
             />
           </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
+import { Link } from 'react-router-dom'
  
 import axios from 'axios'
  
@@ -70,11 +71,6 @@ function Movies() {
     setRunTimeValue(bingeTime)
   }
 
-  const handleBreaksChange = (event) => {
-    const numberBreaks = event.target.value
-    setFormData({ ...formData, [event.target.name]: numberBreaks })
-    console.log(numberBreaks)
-  }
 
   const filterGenresOne = () => {
     if (genreValue) {
@@ -109,7 +105,8 @@ function Movies() {
       <div className="container">
         <div className="tophalf">
           <div className="title">
-            <h2>Choose Your Marathon Or Create Your Own!</h2>
+            <h2>Choose Your Sprint!</h2>
+            <p>In a rush with nothing to watch? Pick your genres and time below to help choose your perfect movie!</p>
           </div>
           <form>
             <div className="searchbar">
@@ -128,7 +125,7 @@ function Movies() {
               </div>
             </div>
             <div className="field">
-              <label className="label-movies">Pick Your Genres!</label>
+              <label className="label-movies">Choose Your Maximum Time! (Mins)</label>
               <div className="control">
                 <input
                   className="uk-input"
@@ -139,56 +136,43 @@ function Movies() {
                 />
               </div>
             </div>
-            <div className="field">
-              <label className="label">Pick The Amount Of Breaks!</label>
-              <div className="select">
-                <select
-                  name="breaks"
-                  onChange={handleBreaksChange}
-                  value={formData.breaks}
-                >
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                </select>
-              </div>
-            </div>
           </form>
         </div>
         <div className="bottomhalf">
           <div className="movie">
-            <h2>Binge Info!</h2>
             {genreValue &&
               movies &&
              filterGenresOne().map(movie =>
-               <div className="posters" key={movie._id} {...movie}>
-                 <h2>{movie.title} ⭐{movie.imdbRating}</h2>
-                 <img src={movie.poster}/>
-               </div>
+               <Link to={`/movies/${movie._id}`} key={movie._id}>
+                 <div className="posters" key={movie._id} {...movie}>
+                   <h2>{movie.title}</h2>
+                   <p>⭐{movie.imdbrating}</p>
+                   <img src={movie.poster}/>
+                 </div>
+               </Link>
              )}
             {genreValue &&
               movies &&
              filterGenresTwo().map(movie =>
-               <div className="posters" key={movie._id} {...movie}>
-                 <h2>{movie.title} ⭐{movie.imdbRating}</h2>
-                 <img src={movie.poster}/>
-               </div>
+               <Link to={`/movies/${movie._id}`} key={movie._id}>
+                 <div className="posters" key={movie._id} {...movie}>
+                   <h2>{movie.title}</h2>
+                   <p>⭐{movie.imdbrating}</p>
+                   <img src={movie.poster}/>
+                 </div>
+               </Link>
              )}
             {genreValue &&
               movies &&
              filterGenresThree().map(movie =>
-               <div className="posters" key={movie._id} {...movie}>
-                 <h2>{movie.title} ⭐{movie.imdbRating}</h2>
-                 <img src={movie.poster}/>
-               </div>
+               <Link to={`/movies/${movie._id}`} key={movie._id}>
+                 <div className="posters" key={movie._id} {...movie}>
+                   <h2>{movie.title}</h2>
+                   <p>⭐{movie.imdbrating}</p>
+                   <img src={movie.poster}/>
+                 </div>
+               </Link>
              )}
-          </div>
-          <div className="movies">
-            <h2>This is Movie Index</h2>
-            {/* {data && data.map(movie => (
-             <div className="card" key={movie.name}>
-             </div>
-           ))} */}
           </div>
         </div>
       </div>
