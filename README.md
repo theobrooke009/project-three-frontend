@@ -1,4 +1,4 @@
-# SEI Project 3 - 
+# SEI Project 3 - MERN Stack App
 
 ![](https://github.com/theobrooke009/project-three-frontend/blob/main/readme-images/project-3-readme-img-2.png) 
 
@@ -12,7 +12,8 @@ This was a group project, built over 8 days with 2 other classmates, Tomas Hedbe
 
 For Project 3 we were tasked with building a full stack MERN app with CRUD functionality and consuming an external API, over a 9 day period and using React.js for the front end and MongoDB for the back end.
 
-- Technologies Used
+ ## Technologies Used
+ 
 - React.js
 - Express
 - MongoDB
@@ -22,6 +23,12 @@ For Project 3 we were tasked with building a full stack MERN app with CRUD funct
 - JSON Web Token
 - Uikit
 
+## Installation Instructions
+
+- Open the server terminal and run npm i to install all dependencies from the package.json file.
+- Run npm run dev in the server terminal to start the backend server.
+- Open the client terminal and run npm i to install all dependencies from the package.json file.
+- Run npm run dev from client terminal to launch the frontend.
 
 
 ## Planning
