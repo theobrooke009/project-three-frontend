@@ -1,8 +1,8 @@
 import React from 'react'
 import Select from 'react-select'
 import { Link, useHistory } from 'react-router-dom'
- 
 import axios from 'axios'
+import { baseUrl } from '../config'
  
 const genreOptions = [
   { value: 'Action', label: 'Action' },
@@ -43,12 +43,14 @@ function Marathon() {
  
   React.useEffect(() => {
     const getData = async () => {
-      const res = await axios.get('/api/movies')
+      const res = await axios.get(`${baseUrl}/movies`)
       setMovies(res.data)
     }
     getData()
  
   }, [ ])
+
+  
   
   const handleGenreChange = (selected, name) => {
     const selectedGenres = selected ? selected.map(item => item.value) : []
@@ -81,6 +83,8 @@ function Marathon() {
   const generateMarathon = () => {
     history.push('/marathongenerator')
   }
+
+  console.log('right here', movies)
   
   const addMovieToMarathon = (e) => {
     if (titleSelection.includes(e.target.id) &&

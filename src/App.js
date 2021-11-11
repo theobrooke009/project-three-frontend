@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import axios from 'axios'
+import { baseUrl } from './config.js'
 
 // import NavBar from './components/common/Navbar.js'
 import Home from './components/common/Home.js'
@@ -20,7 +21,7 @@ function App() {
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await axios.get('/api/movies')
+      const res = await axios.get(`${baseUrl}/movies`)
       console.log(res.data)
     }
     getData()

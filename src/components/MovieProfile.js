@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import { baseUrl } from '../config.js'
 
 function MovieProfile() {
   const { movieId } = useParams()
@@ -9,7 +10,7 @@ function MovieProfile() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get(`/api/movies/${movieId}`)
+        const res = await axios.get(`${baseUrl}/movies/${movieId}`)
         setMovie(res.data)
       } catch (err) {
         console.log(err)

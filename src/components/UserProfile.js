@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import { baseUrl } from '../config.js'
 
 function UserProfile() {
   const { userId } = useParams()
@@ -9,7 +10,7 @@ function UserProfile() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get(`/api/user/${userId}`)
+        const res = await axios.get(`${baseUrl}/user/${userId}`)
         setUser(res.data)
       } catch (err) {
         console.log(err)

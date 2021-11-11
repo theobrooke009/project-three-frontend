@@ -2,6 +2,7 @@ import { titleSelection, posterSelection } from './Marathon.js'
 import React from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+import { baseUrl } from '../config.js'
 
 
 function MarathonGenerator() {
@@ -28,7 +29,7 @@ function MarathonGenerator() {
     e.preventDefault()
     console.log(playlistData)
     try {
-      const { data } = await axios.post('/api/marathons', playlistData)
+      const { data } = await axios.post(`${baseUrl}/marathons`, playlistData)
       console.log(titleSelection)
       history.push('/marathons')
       console.log(data)

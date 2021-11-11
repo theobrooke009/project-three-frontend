@@ -1,8 +1,8 @@
 import React from 'react'
 import Select from 'react-select'
 import { Link } from 'react-router-dom'
- 
 import axios from 'axios'
+import { baseUrl } from '../config.js'
  
 const genreOptions = [
   { value: 'Action', label: 'Action' },
@@ -52,7 +52,7 @@ function Movies() {
  
   React.useEffect(() => {
     const getData = async () => {
-      const res = await axios.get('/api/movies')
+      const res = await axios.get(`${baseUrl}/movies`)
       setMovies(res.data)
     }
     getData()

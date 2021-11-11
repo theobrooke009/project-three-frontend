@@ -50,7 +50,6 @@ function Register() {
               </div>
               {formErrors.username && (
                 <p className="help is-danger">{formErrors.username}</p>
-                {console(formErrors.username)}
               )}
             </div>
             <div className="field">
