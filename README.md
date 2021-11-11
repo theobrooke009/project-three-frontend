@@ -1,4 +1,4 @@
-# Project 3 ReadMe
+# SEI Project 3 - 
 
 ![](https://github.com/theobrooke009/project-three-frontend/blob/main/readme-images/project-3-readme-img-2.png) 
 
